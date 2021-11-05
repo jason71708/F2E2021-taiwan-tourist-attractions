@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { RootState } from './store/reducers'
+import { fetchActivitiesRequest } from './store/actions/activities'
 
 function App() {
+  const dispatch = useDispatch()
+  const { pending, activities, error } = useSelector(
+    (state: RootState) => state.activities
+  )
+
+  useEffect(() => {
+    dispatch(fetchActivitiesRequest())
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+   <div>
+     {pending ? (
+       <div>Loading...</div>
+     ): error ? (
+       <div>Error</div>
+     ): activities.map((todo, index) => (
+       <div key={todo.ID}>
+         {++index}: {todo.Name || ''}
+       </div>
+     ))}
+   </div>
+  )
 }
 
-export default App;
+export default App
