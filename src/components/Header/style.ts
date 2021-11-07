@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import breakpoint from '../../styles/breakpoint'
 
-export const HeaderWrapper = styled.div`
+export const HeaderWrapper = styled.section`
   background-color: #fff;
   width: 100%;
   padding: 16px;

@@ -9,7 +9,6 @@ import triangleIcon from '../../assets/image/triangle-icon.svg'
 import squareIcon from '../../assets/image/square-icon.svg'
 import circleIcon from '../../assets/image/circle-icon.svg'
 
-
 function NavBar() {
   const theme = useContext(ThemeContext)
   const location = useLocation()
