@@ -1,41 +1,36 @@
 import React from 'react'
 import Card from '../Card'
-import Select from 'react-select'
+import CustomSelect from '../CustomSelect'
 import { BannerWrapper, BannerTitle, BannerImage, BannerContent, BannerDescription, InputRow, InputStyled } from './style'
+// import 景點圖 from '../../assets/image/景點.png'
 import 旅遊圖 from '../../assets/image/旅遊.png'
+import 住宿圖 from '../../assets/image/住宿.png'
 import { ReactComponent as TitleImage } from '../../assets/image/title.svg'
 import { ReactComponent as SearchIcon } from '../../assets/image/search.svg'
 import { ReactComponent as LocationIcon } from '../../assets/image/location.svg'
-import theme from '../../styles/theme'
+import { ScenicSpotPageSeachOptions, AccommodationPageSeachOptions, CityOptions } from '../../constants'
+import { Paths } from '../../constants'
+import { useLocation, Location } from 'react-router-dom'
 
-const options = [
-  { value: null, label: '類別' },
-  { value: 'chocolate', label: 'Chocolate' },
-  { value: 'strawberry', label: 'Strawberry' },
-  { value: 'vanilla', label: 'Vanilla' }
-]
-
-const customStyles = {
-  option: (provided: object, state: { isSelected: boolean }) => ({
-    ...provided,
-    background: state.isSelected ? theme.colors.secondary : 'none',
-  }),
-  container: (provided: object) => ({
-    ...provided,
-    width: '40%',
-    flex: '1 1 auto',
-    marginRight: '8px'
-  }),
-  indicatorSeparator: () => ({
-    display: 'none'
-  })
+const currentPathImage = (location: Location) => {
+  switch (location.pathname) {
+    case Paths.ScenicSpots:
+      return 旅遊圖
+    case Paths.Accommodations:
+      return 住宿圖
+    default:
+      return undefined
+  }
 }
 
 function Banner() {
+  const location = useLocation()
+  const image = currentPathImage(location)
+
   return (
     <BannerWrapper>
       <Card>
-        <BannerImage src={旅遊圖} />
+        <BannerImage src={image} />
         <BannerContent>
           <BannerTitle>
             <TitleImage />
@@ -46,8 +41,22 @@ function Banner() {
             <SearchIcon />
           </InputRow>
           <InputRow>
-            <Select isSearchable={false} styles={customStyles} options={options.slice(1)} defaultValue={options[0]}/>
-            <Select isSearchable={false} styles={customStyles} options={options.slice(1)} defaultValue={options[0]}/>
+            {location.pathname === Paths.ScenicSpots ? (
+              <CustomSelect
+                key="ScenicSpot"
+                isSearchable={false}
+                options={ScenicSpotPageSeachOptions.slice(1)}
+                defaultValue={ScenicSpotPageSeachOptions[0]}
+              />
+            ) : (
+              <CustomSelect
+                key="Accommodation"
+                isSearchable={false}
+                options={AccommodationPageSeachOptions.slice(1)}
+                defaultValue={AccommodationPageSeachOptions[0]}
+              />
+            )}
+            <CustomSelect isSearchable={false} options={CityOptions.slice(1)} defaultValue={CityOptions[0]}/>
             <LocationIcon />
           </InputRow>
         </BannerContent>
