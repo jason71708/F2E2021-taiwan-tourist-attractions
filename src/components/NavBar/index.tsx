@@ -1,8 +1,6 @@
 import React, { useContext } from 'react'
 import {
   Link,
-  useMatch,
-  useResolvedPath,
   useLocation
 } from 'react-router-dom'
 import { ThemeContext } from 'styled-components'
