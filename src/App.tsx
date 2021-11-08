@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from './store/reducers'
 import { fetchActivitiesRequest } from './store/actions/activities'
 import MainHeader from './components/Header'
+import Footer from './components/Footer'
 import styled from 'styled-components'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import ScenicSpotsPage from './components/ScenicSpotsPage'
@@ -48,6 +49,7 @@ function App() {
           {++index}: {todo.Name || ''}
         </div>
       ))} */}
+      <Footer />
     </AppWrapper>
   </BrowserRouter>
   )

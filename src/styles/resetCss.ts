@@ -33,6 +33,9 @@ export default createGlobalStyle`
   a:visited {
     color: inherit;
   }
+  a:-webkit-any-link {
+    color: inherit;
+  }
   abbr[title] {
     border-bottom: none;
     text-decoration: underline;
