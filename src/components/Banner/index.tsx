@@ -19,7 +19,7 @@ import { ReactComponent as LocationIcon } from '../../assets/image/location.svg'
 import {
   ScenicSpotPageSeachOptions,
   AccommodationPageSeachOptions,
-  CityOptions
+  cityOptions
 } from '../../constants'
 import { Paths } from '../../constants'
 import { useLocation, Location } from 'react-router-dom'
@@ -68,7 +68,7 @@ function Banner() {
                 defaultValue={AccommodationPageSeachOptions[0]}
               />
             )}
-            <CustomSelect isSearchable={false} options={CityOptions.slice(1)} defaultValue={CityOptions[0]}/>
+            <CustomSelect isSearchable={false} options={cityOptions.slice(1)} defaultValue={cityOptions[0]}/>
             <LocationIcon />
           </InputRow>
         </BannerContent>

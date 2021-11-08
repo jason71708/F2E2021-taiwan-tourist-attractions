@@ -17,9 +17,9 @@ export const AccommodationPageSeachOptions: QueryOption[] = [
   { value: '住宿', label: '住宿' }
 ]
 
-export const CityOptions: QueryOption[] = [
+export const cityOptions: QueryOption[] = [
   { value: null, label: '不分縣市' },
-  { value: '臺北市', label: '臺北市' },
+  { value: '台北市', label: '台北市' },
   { value: '新北市', label: '新北市' },
   { value: '桃園市', label: '桃園市' },
   { value: '台中市', label: '台中市' },
@@ -43,6 +43,23 @@ export const CityOptions: QueryOption[] = [
   { value: '連江縣', label: '連江縣' }
 ]
 
+export const famousCities = [
+  '台北市',
+  '新北市',
+  '桃園市',
+  '台中市',
+  '台南市',
+  '高雄市',
+  '新竹市',
+  '南投縣',
+  '嘉義市',
+  '屏東縣',
+  '宜蘭縣',
+  '花蓮縣',
+  '台東縣',
+  '金門縣'
+]
+
 export enum Paths {
   ScenicSpots = '/scenic-spots',
   Accommodations = '/accommodations',
@@ -54,3 +71,5 @@ export enum Shapes {
   Square = 'Square',
   Circle = 'Circle'
 }
+
+export const generateStaticImagePath = (name: string, type: string) => `/images/${name}.${type}`
