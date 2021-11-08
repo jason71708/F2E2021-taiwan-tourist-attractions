@@ -33,3 +33,7 @@ export const LogoStyled = styled.img`
     padding-top: 12px;
   `}
 `
+
+export const LinkStyle = {
+  height: '100%'
+}

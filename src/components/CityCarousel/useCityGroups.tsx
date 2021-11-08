@@ -40,7 +40,7 @@ function useCityGroups() {
   const isLgBp = useBreakpoint('lg')
 
   return isLgBp ? seperateCities(sliceCities(availableCities, 7)) :
-    isMdBp ? seperateCities(sliceCities(availableCities, 6)) :
+    isMdBp ? seperateCities(sliceCities(availableCities.slice(0, 12), 6)) : // availableCities.slice(0, 12): In order to make it looks perfect.
     seperateCities(sliceCities(availableCities, 3))
 }
 

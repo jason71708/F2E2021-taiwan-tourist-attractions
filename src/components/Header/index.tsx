@@ -1,13 +1,13 @@
 import React from 'react'
 import logo from '../../assets/image/logo.svg'
-import { HeaderWrapper, LogoStyled } from './style'
+import { HeaderWrapper, LogoStyled, LinkStyle } from './style'
 import NavBar from '../NavBar'
 import { Link } from 'react-router-dom'
 
-function MainHeader() {
+function Header() {
   return (
     <HeaderWrapper>
-      <Link to="/">
+      <Link style={LinkStyle} to="/">
         <LogoStyled src={logo} alt="logo" />
       </Link>
       <NavBar />
@@ -15,4 +15,4 @@ function MainHeader() {
   )
 }
 
-export default MainHeader
+export default Header
