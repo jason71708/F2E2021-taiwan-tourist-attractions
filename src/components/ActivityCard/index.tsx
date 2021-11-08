@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../Card'
+import ShawdowEffectCard from '../ShawdowEffectCard'
 import {
   ActivityCardWrapper,
   ContentWrapper,
@@ -24,7 +24,7 @@ type Activity = {
 function ActivityCard({ title, location, imageUrl, description }: Activity) {
   return (
     <ActivityCardWrapper>
-      <Card>
+      <ShawdowEffectCard>
         <ContentWrapper>
           <ActivityImage backgoundUrl={imageUrl} />
           <ActivityInformation>
@@ -41,7 +41,7 @@ function ActivityCard({ title, location, imageUrl, description }: Activity) {
             </ActivityRow>
           </ActivityInformation>
         </ContentWrapper>
-      </Card>
+      </ShawdowEffectCard>
     </ActivityCardWrapper>
   )
 }

@@ -5,6 +5,7 @@ import SectionTitle from '../SectionTitle'
 import { PageWrapper, ContentWrapper } from './style'
 import { Shapes } from '../../constants'
 import SectionActivity from '../SectionActivity'
+import SectionScenicSpot from '../SectionScenicSpot'
 
 function ScenicSpotsPage() {
   return(
@@ -21,6 +22,7 @@ function ScenicSpotsPage() {
         </ContentWrapper>
         <ContentWrapper>
           <SectionTitle title={'熱門景點'} type={Shapes.Triangle} />
+          <SectionScenicSpot />
         </ContentWrapper>
       </PageWrapper>
     </>

@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../Card'
+import ShawdowEffectCard from '../ShawdowEffectCard'
 import CustomSelect from '../CustomSelect'
 import {
   BannerWrapper,
@@ -41,7 +41,7 @@ function Banner() {
 
   return (
     <BannerWrapper>
-      <Card>
+      <ShawdowEffectCard>
         <BannerImage src={image} />
         <BannerContent>
           <BannerTitle>
@@ -72,7 +72,7 @@ function Banner() {
             <LocationIcon />
           </InputRow>
         </BannerContent>
-      </Card>
+      </ShawdowEffectCard>
     </BannerWrapper>
   )
 }
