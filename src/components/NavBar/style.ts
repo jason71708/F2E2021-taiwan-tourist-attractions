@@ -44,7 +44,7 @@ export const LinkIcon = styled.img`
 
 export const LinkText = styled.span<LinkTextProps>`
   display: inline-block;
-  color: ${props => props.match ? props.color : '#ACACAC'};
+  color: ${props => props.match ? props.color : props.theme.colors.gray};
   padding-bottom: 0;
   text-decoration: none;
 
