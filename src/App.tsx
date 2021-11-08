@@ -10,6 +10,7 @@ import Banner from './components/Banner'
 import { Paths } from './constants'
 
 const AppWrapper = styled.div`
+  color: #0D0B0C;
   max-width: 1280px;
   width: 100vw;
   margin: 0 auto;

@@ -48,3 +48,9 @@ export enum Paths {
   Accommodations = '/accommodations',
   Traffic = '/traffic'
 }
+
+export enum Shapes {
+  Triangle = 'Triangle',
+  Square = 'Square',
+  Circle = 'Circle'
+}

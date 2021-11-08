@@ -1,14 +1,26 @@
 import React from 'react'
 import Card from '../Card'
 import CustomSelect from '../CustomSelect'
-import { BannerWrapper, BannerTitle, BannerImage, BannerContent, BannerDescription, InputRow, InputStyled } from './style'
+import {
+  BannerWrapper,
+  BannerTitle,
+  BannerImage,
+  BannerContent,
+  BannerDescription,
+  InputRow,
+  InputStyled
+} from './style'
 // import 景點圖 from '../../assets/image/景點.png'
 import 旅遊圖 from '../../assets/image/旅遊.png'
 import 住宿圖 from '../../assets/image/住宿.png'
 import { ReactComponent as TitleImage } from '../../assets/image/title.svg'
 import { ReactComponent as SearchIcon } from '../../assets/image/search.svg'
 import { ReactComponent as LocationIcon } from '../../assets/image/location.svg'
-import { ScenicSpotPageSeachOptions, AccommodationPageSeachOptions, CityOptions } from '../../constants'
+import {
+  ScenicSpotPageSeachOptions,
+  AccommodationPageSeachOptions,
+  CityOptions
+} from '../../constants'
 import { Paths } from '../../constants'
 import { useLocation, Location } from 'react-router-dom'
 

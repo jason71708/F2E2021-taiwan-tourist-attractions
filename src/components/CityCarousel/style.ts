@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const LeftButton = styled.button`
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 60px;
   transform: translateY(-50%);
   z-index: 2;
@@ -11,7 +11,7 @@ export const LeftButton = styled.button`
 
 export const RightButton = styled.button`
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 60px;
   transform: translateY(-50%);
   z-index: 2;
