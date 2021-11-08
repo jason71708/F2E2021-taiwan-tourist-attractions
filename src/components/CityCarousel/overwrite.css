@@ -1,0 +1,11 @@
+/* For overwrite swiper default css */
+
+.swiper-container {
+  overflow: visible;
+}
+
+@media screen and (min-width: 1280px) {
+  .swiper-container {
+    overflow: hidden;
+  }
+}

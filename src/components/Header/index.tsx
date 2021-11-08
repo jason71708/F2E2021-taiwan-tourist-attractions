@@ -1,5 +1,4 @@
 import React from 'react'
-import Card from '../Card'
 import logo from '../../assets/image/logo.svg'
 import { HeaderWrapper, LogoStyled } from './style'
 import NavBar from '../NavBar'

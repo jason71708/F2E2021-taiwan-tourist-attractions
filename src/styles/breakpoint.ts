@@ -1,6 +1,10 @@
 import { createBreakpoint } from 'styled-components-breakpoint'
 
-const breakpoints = {
+type Breakpoint = {
+  [bp: string]: number
+}
+
+export const breakpoints: Breakpoint = {
   xs: 0,
   sm: 360,
   md: 768,
@@ -8,6 +12,6 @@ const breakpoints = {
   xl: 1440
 }
 
-const breakpoint = createBreakpoint(breakpoints);
+const breakpoint = createBreakpoint(breakpoints)
 
 export default breakpoint
