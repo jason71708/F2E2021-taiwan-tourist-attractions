@@ -6,9 +6,11 @@ import {
   FetchActivitiesFailure,
   FetchActivitiesFailurePayload
 } from './type'
+import { TDXAPIParameters } from '../../../api/types'
 
-export const fetchActivitiesRequest = (): FetchActivitiesRequest => ({
-  type: activityTypes.FETCH_ACTIVITY_REQUEST
+export const fetchActivitiesRequest = (payload: TDXAPIParameters): FetchActivitiesRequest => ({
+  type: activityTypes.FETCH_ACTIVITY_REQUEST,
+  payload
 })
 
 export const fetchActivitiesSuccess = (

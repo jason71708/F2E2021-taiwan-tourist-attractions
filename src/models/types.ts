@@ -1,14 +1,14 @@
 export type TourismPicture = {
-  PictureUrl1?: String
-  PictureDescription1?: String
-  PictureUrl2?: String
-  PictureDescription2?: String
-  PictureUrl3?: String
-  PictureDescription3?: String
+  PictureUrl1: string
+  PictureDescription1?: string
+  PictureUrl2?: string
+  PictureDescription2?: string
+  PictureUrl3?: string
+  PictureDescription3?: string
 }
 
 export type PointType = {
   PositionLon?: number
   PositionLat?: number
-  GeoHash?: String
+  GeoHash?: string
 }

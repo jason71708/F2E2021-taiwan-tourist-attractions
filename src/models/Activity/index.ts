@@ -2,7 +2,7 @@ import { TourismPicture, PointType } from '../types'
 
 export type ActivityTourismInfo = {
   readonly ID: string
-  Name?: string
+  Name: string
   Description?: string
   Particpation?: string
   Location?: string
@@ -14,7 +14,7 @@ export type ActivityTourismInfo = {
   Cycle?: string
   NonCycle?: string
   WebsiteUrl?: string
-  Picture?: TourismPicture
+  Picture: TourismPicture
   Position?: PointType
   Class1?: string
   Class2?: string

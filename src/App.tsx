@@ -1,7 +1,4 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { RootState } from './store/reducers'
-import { fetchActivitiesRequest } from './store/actions/activities'
+import React from 'react'
 import MainHeader from './components/Header'
 import Footer from './components/Footer'
 import styled from 'styled-components'
@@ -20,38 +17,20 @@ const AppWrapper = styled.div`
 `
 
 function App() {
-  const dispatch = useDispatch()
-  const { pending, activities, error } = useSelector(
-    (state: RootState) => state.activities
-  )
-
-  // useEffect(() => {
-  //   dispatch(fetchActivitiesRequest())
-  // }, [])
-
   return (
-  <BrowserRouter>
-    <AppWrapper>
-      <MainHeader />
-      <Routes>
-        <Route path="/" element={<Navigate to={Paths.ScenicSpots} replace={true} />}></Route>
-        <Route path={Paths.ScenicSpots} element={<ScenicSpotsPage />}></Route>
-        <Route path={Paths.Accommodations} element={<Banner />}></Route>
-        <Route path={Paths.Traffic} element={<div>3</div>}></Route>
-        <Route path="*" element={<div>NotFound</div>} />
-      </Routes>
-      {/* {pending ? (
-        <div>Loading...</div>
-      ): error ? (
-        <div>Error</div>
-      ): activities.map((todo, index) => (
-        <div key={todo.ID}>
-          {++index}: {todo.Name || ''}
-        </div>
-      ))} */}
-      <Footer />
-    </AppWrapper>
-  </BrowserRouter>
+    <BrowserRouter>
+      <AppWrapper>
+        <MainHeader />
+        <Routes>
+          <Route path="/" element={<Navigate to={Paths.ScenicSpots} replace={true} />}></Route>
+          <Route path={Paths.ScenicSpots} element={<ScenicSpotsPage />}></Route>
+          <Route path={Paths.Accommodations} element={<Banner />}></Route>
+          <Route path={Paths.Traffic} element={<div>3</div>}></Route>
+          <Route path="*" element={<div>NotFound</div>} />
+        </Routes>
+        <Footer />
+      </AppWrapper>
+    </BrowserRouter>
   )
 }
 

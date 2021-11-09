@@ -1,4 +1,5 @@
 import { ActivityTourismInfo } from '../../../models/Activity'
+import { TDXAPIParameters } from '../../../api/types'
 
 export enum activityTypes {
   FETCH_ACTIVITY_REQUEST = 'FETCH_ACTIVITY_REQUEST',
@@ -22,6 +23,7 @@ export type FetchActivitiesFailurePayload = {
 
 export type FetchActivitiesRequest = {
   type: activityTypes.FETCH_ACTIVITY_REQUEST
+  payload: TDXAPIParameters
 }
 
 export type FetchActivitiesSuccess = {

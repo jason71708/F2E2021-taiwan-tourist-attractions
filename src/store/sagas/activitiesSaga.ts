@@ -1,19 +1,21 @@
 import { tdxAPI } from '../../api'
-import { all, call, put, takeLatest } from 'redux-saga/effects'
+import { fork, call, put, take } from 'redux-saga/effects'
 import { ActivityTourismInfo } from '../../models/Activity'
 import {
   fetchActivitiesSuccess,
   fetchActivitiesFailure
 } from '../actions/activities'
 import { activityTypes } from '../actions/activities/type'
+import { TDXAPIParameters } from '../../api/types'
+import { getPathWithQueryString } from '../../api/utils'
 
-const fetchActivities = () => (
-  tdxAPI.get<ActivityTourismInfo>('/v2/Tourism/Activity')
+const fetchActivities = (parameters: TDXAPIParameters) => (
+  tdxAPI.get<ActivityTourismInfo>(getPathWithQueryString('/v2/Tourism/Activity', parameters))
 )
 
-function* fetchActivitiesSaga() {
+function* fetchActivitiesSaga(parameters: TDXAPIParameters) {
   try {
-    const { data }: { data: ActivityTourismInfo[] } = yield call(fetchActivities)
+    const { data }: { data: ActivityTourismInfo[] } = yield call(fetchActivities, parameters)
     yield put(
       fetchActivitiesSuccess({
         activities: data
@@ -29,7 +31,10 @@ function* fetchActivitiesSaga() {
 }
 
 function* activitiesSaga() {
-  yield all([takeLatest(activityTypes.FETCH_ACTIVITY_REQUEST, fetchActivitiesSaga)])
+  while (true) {
+    const payload: TDXAPIParameters = yield take(activityTypes.FETCH_ACTIVITY_REQUEST);
+    yield fork(fetchActivitiesSaga, payload)
+  }
 }
 
 export default activitiesSaga

@@ -5,6 +5,7 @@ const customStyles = {
   option: (provided: object, state: { isSelected: boolean }) => ({
     ...provided,
     background: state.isSelected ? theme.colors.secondary : 'none',
+    cursor: 'pointer'
   }),
   container: (provided: object) => ({
     ...provided,
