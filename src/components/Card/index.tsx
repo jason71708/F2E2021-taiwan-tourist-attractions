@@ -1,12 +1,11 @@
 import React from 'react'
-import ShawdowEffectCard from '../ShawdowEffectCard'
+import ShadowEffectCard from '../ShadowEffectCard'
 import {
   ActivityCardWrapper,
   ContentWrapper,
   ActivityImage,
   ActivityInformation,
   ActivityTitle,
-  ActivityRow,
   ActivityLocation,
   MapIconWrapper
 } from './style'
@@ -21,22 +20,20 @@ type Activity = {
 function ActivityCard({ title, location, imageUrl }: Activity) {
   return (
     <ActivityCardWrapper>
-      <ShawdowEffectCard>
+      <ShadowEffectCard>
         <ContentWrapper>
           <ActivityImage backgoundUrl={imageUrl} />
           <ActivityInformation>
             <ActivityTitle>{title}</ActivityTitle>
-            <ActivityRow>
-              <ActivityLocation>
-                <MapIconWrapper>
-                  <MapIcon />
-                </MapIconWrapper>
-                {location}
-              </ActivityLocation>
-            </ActivityRow>
+            <ActivityLocation>
+              <MapIconWrapper>
+                <MapIcon />
+              </MapIconWrapper>
+              {location}
+            </ActivityLocation>
           </ActivityInformation>
         </ContentWrapper>
-      </ShawdowEffectCard>
+      </ShadowEffectCard>
     </ActivityCardWrapper>
   )
 }
