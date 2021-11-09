@@ -1,132 +1,102 @@
 import styled from 'styled-components'
-import breakpoint from '../../styles/breakpoint'
+import breakpoint, { breakpoints } from '../../styles/breakpoint'
 import { LimitLineCss } from '../../styles/helper'
 
-export const ActivityCardWrapper = styled.div`
-  width: 100%;
-  height: 120px;
-  margin-bottom: 16px;
+export const CardWrapper = styled.div`
+  width: calc((100% - 8px) / 2);
+  height: 230px;
+  margin-bottom: 18px;
+  margin-right: 8px;
 
   ${breakpoint('md')`
-    width: 49%;
+    width: calc((100% - 36px) / 4);
+    margin-right: 12px;
+    height: 240px;
   `}
 
   ${breakpoint('lg')`
-    width: 525px;
-    height: 236px;
+    width: calc((100% - 32px) / 5);
+    margin-right: 8px;
+    height: 270px;
   `}
+
+  // styled-components-breakpoint doesn't support :nth selector
+  &:nth-child(2n) {
+    margin-right: 0;
+
+    @media screen and (min-width: ${breakpoints.md}px) {
+      margin-right: 12px;
+    }
+
+    @media screen and (min-width: ${breakpoints.lg}px) {
+      margin-right: 8px;
+    }
+  }
+
+  &:nth-child(4n) {
+    @media screen and (min-width: ${breakpoints.md}px) {
+      margin-right: 0;
+    }
+
+    @media screen and (min-width: ${breakpoints.lg}px) {
+      margin-right: 8px;
+    }
+  }
+
+  &:nth-child(5n) {
+    @media screen and (min-width: ${breakpoints.lg}px) {
+      margin-right: 0px;
+    }
+  }
 `
 
 export const ContentWrapper = styled.div`
   width: 100%;
   height: 100%;
   padding: 12px;
+  cursor: pointer;
   display: flex;
+  flex-direction: column;
 
   ${breakpoint('lg')`
     padding: 16px;
   `}
 `
 
-type ActivityImageProps = {
+type CardImageProps = {
   backgoundUrl: string
 }
 
-export const ActivityImage = styled.div<ActivityImageProps>`
+export const CardImage = styled.div<CardImageProps>`
   flex-shrink: 0;
-  width: 100px;
-  height: 100%;
+  width: 100%;
+  height: 120px;
   background-image: url(${props => props.backgoundUrl});
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
-  margin-right: 16px;
+  margin-bottom: 4px;
 
   ${breakpoint('lg')`
-    width: 187px;
+    height: 150px;
   `}
 `
 
-export const ActivityInformation = styled.div`
+export const CardInformation = styled.div`
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 `
 
-export const ActivityTitle = styled.h5`
+export const CardTitle = styled.h5`
   margin: 0;
   font-size: 14px;
   font-weight: normal;
-  cursor: pointer;
   line-height: 20px;
-
-  &:hover {
-    text-decoration: underline;
-  }
+  ${LimitLineCss}
 
   ${breakpoint('lg')`
     font-size: 16px;
-  `}
-`
-
-export const ActivityDescription = styled.p`
-  ${LimitLineCss};
-  display: none;
-  margin: 0;
-  font-size: 14px;
-  line-height: 20px;
-  color: ${props => props.theme.colors.gray};
-
-  ${breakpoint('lg')`
-    display: -webkit-box;
-  `}
-`
-
-export const ActivityRow = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`
-
-export const ActivityLocation = styled.p`
-  display: flex;
-  align-items: center;
-  margin: 0;
-  font-size: 14px;
-  cursor: pointer;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`
-
-export const MapIconWrapper = styled.span`
-  margin-right: 8px;
-
-  & path {
-    fill: ${props => props.theme.colors.primary};
-  }
-
-  ${breakpoint('lg')`
-    margin-right: 12px;
-  `}
-`
-
-export const DetailButton = styled.button`
-  display: none;
-  border: 1px solid ${props => props.theme.colors.primary};
-  color: ${props => props.theme.colors.primary};
-  font-size: 14px;
-  padding: 8px 32px;
-  border-radius: 8px;
-
-  &:hover {
-    color: #fff;
-    background-color: ${props => props.theme.colors.primary};
-  }
-
-  ${breakpoint('lg')`
-    display: inline-block;
   `}
 `

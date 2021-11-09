@@ -5,7 +5,7 @@ export const shawdowCss = css`
 `
 
 type LimitLineCssProps = {
-  line: number
+  lineLimit: number
 }
 
 export const LimitLineCss = css<LimitLineCssProps>`
@@ -13,6 +13,6 @@ export const LimitLineCss = css<LimitLineCssProps>`
   text-overflow: ellipsis;
   display: block;
   display: -webkit-box;
-  -webkit-line-clamp: ${props => props.line};
+  -webkit-line-clamp: ${props => props.lineLimit};
   -webkit-box-orient: vertical;
 `

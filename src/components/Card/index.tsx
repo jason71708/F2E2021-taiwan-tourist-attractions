@@ -1,41 +1,34 @@
 import React from 'react'
 import ShadowEffectCard from '../ShadowEffectCard'
+import LocationLink from '../LocationLink'
 import {
-  ActivityCardWrapper,
+  CardWrapper,
   ContentWrapper,
-  ActivityImage,
-  ActivityInformation,
-  ActivityTitle,
-  ActivityLocation,
-  MapIconWrapper
+  CardImage,
+  CardInformation,
+  CardTitle
 } from './style'
-import { ReactComponent as MapIcon } from '../../assets/image/map.svg'
 
-type Activity = {
+type DisplayInfo = {
   title: string
   location: string
   imageUrl: string
 }
 
-function ActivityCard({ title, location, imageUrl }: Activity) {
+function Card({ title, location, imageUrl }: DisplayInfo) {
   return (
-    <ActivityCardWrapper>
+    <CardWrapper>
       <ShadowEffectCard>
         <ContentWrapper>
-          <ActivityImage backgoundUrl={imageUrl} />
-          <ActivityInformation>
-            <ActivityTitle>{title}</ActivityTitle>
-            <ActivityLocation>
-              <MapIconWrapper>
-                <MapIcon />
-              </MapIconWrapper>
-              {location}
-            </ActivityLocation>
-          </ActivityInformation>
+          <CardImage backgoundUrl={imageUrl} />
+          <CardInformation>
+            <CardTitle lineLimit={2}>{title}</CardTitle>
+            <LocationLink locationName={location} detailLocation={location} />
+          </CardInformation>
         </ContentWrapper>
       </ShadowEffectCard>
-    </ActivityCardWrapper>
+    </CardWrapper>
   )
 }
 
-export default ActivityCard
+export default Card

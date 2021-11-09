@@ -1,5 +1,6 @@
 import React from 'react'
 import ShadowEffectCard from '../ShadowEffectCard'
+import LocationLink from '../LocationLink'
 import {
   ActivityCardWrapper,
   ContentWrapper,
@@ -8,11 +9,8 @@ import {
   ActivityTitle,
   ActivityDescription,
   ActivityRow,
-  ActivityLocation,
-  MapIconWrapper,
   DetailButton
 } from './style'
-import { ReactComponent as MapIcon } from '../../assets/image/map.svg'
 
 type Activity = {
   title: string
@@ -29,14 +27,9 @@ function ActivityCard({ title, location, imageUrl, description }: Activity) {
           <ActivityImage backgoundUrl={imageUrl} />
           <ActivityInformation>
             <ActivityTitle>{title}</ActivityTitle>
-            <ActivityDescription line={6}>{description}</ActivityDescription>
+            <ActivityDescription lineLimit={6}>{description}</ActivityDescription>
             <ActivityRow>
-              <ActivityLocation>
-                <MapIconWrapper>
-                  <MapIcon />
-                </MapIconWrapper>
-                {location}
-              </ActivityLocation>
+              <LocationLink locationName={location} detailLocation={location} />
               <DetailButton>活動詳情</DetailButton>
             </ActivityRow>
           </ActivityInformation>
