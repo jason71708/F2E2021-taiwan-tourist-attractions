@@ -14,22 +14,23 @@ import {
 
 type Activity = {
   name: string
+  imageUrl: string,
   description?: string
   location?: string
-  imageUrl: string
+  address?: string
 }
 
-function ActivityCard({ name, location, imageUrl, description }: Activity) {
+function ActivityCard({ name, location, imageUrl, description, address }: Activity) {
   return (
     <ActivityCardWrapper>
       <ShadowEffectCard>
         <ContentWrapper>
           <ActivityImage backgoundUrl={imageUrl} />
           <ActivityInformation>
-            <ActivityTitle>{name}</ActivityTitle>
+            <ActivityTitle lineLimit={1}>{name}</ActivityTitle>
             {description && <ActivityDescription lineLimit={6}>{description}</ActivityDescription>}
             <ActivityRow>
-              {location && <LocationLink locationName={location} detailLocation={location} />}
+              {location && address && <LocationLink location={location} address={address} />}
               <DetailButton>活動詳情</DetailButton>
             </ActivityRow>
           </ActivityInformation>

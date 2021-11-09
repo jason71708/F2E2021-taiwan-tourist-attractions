@@ -13,6 +13,7 @@ function SectionActivity({ activities }: { activities: ActivityTourismInfo[] }) 
           location={activity.Location}
           imageUrl={activity.Picture.PictureUrl1}
           description={activity.Description}
+          address={activity.Address}
         />
       ))}
     </SectionActivityWrapper>

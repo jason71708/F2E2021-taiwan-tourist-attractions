@@ -60,6 +60,7 @@ export const ActivityTitle = styled.h5`
   font-weight: normal;
   cursor: pointer;
   line-height: 20px;
+  ${LimitLineCss}
 
   &:hover {
     text-decoration: underline;

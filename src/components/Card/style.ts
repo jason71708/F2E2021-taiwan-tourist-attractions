@@ -104,3 +104,11 @@ export const CardTitle = styled.h5`
     font-size: 16px;
   `}
 `
+
+export const CardDescription = styled.p`
+  ${LimitLineCss};
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: ${props => props.theme.colors.gray};
+`

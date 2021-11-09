@@ -8,7 +8,7 @@ import {
 } from './type'
 import { TDXAPIParameters } from '../../../api/types'
 
-export const fetchActivitiesRequest = (payload: TDXAPIParameters): FetchActivitiesRequest => ({
+export const fetchActivitiesRequest = (payload: TDXAPIParameters = {}): FetchActivitiesRequest => ({
   type: activityTypes.FETCH_ACTIVITY_REQUEST,
   payload
 })

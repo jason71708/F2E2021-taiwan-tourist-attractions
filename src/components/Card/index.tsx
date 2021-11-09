@@ -6,24 +6,31 @@ import {
   ContentWrapper,
   CardImage,
   CardInformation,
-  CardTitle
+  CardTitle,
+  CardDescription
 } from './style'
 
 type DisplayInfo = {
-  title: string
-  location: string
+  name: string
   imageUrl: string
+  location?: string
+  address?: string,
+  description?: string
 }
 
-function Card({ title, location, imageUrl }: DisplayInfo) {
+function Card({ name, location, imageUrl, address, description }: DisplayInfo) {
   return (
     <CardWrapper>
       <ShadowEffectCard>
         <ContentWrapper>
           <CardImage backgoundUrl={imageUrl} />
           <CardInformation>
-            <CardTitle lineLimit={2}>{title}</CardTitle>
-            <LocationLink locationName={location} detailLocation={location} />
+            <CardTitle lineLimit={1}>{name}</CardTitle>
+            { (location && address) ?
+              <LocationLink location={location} address={address} /> :
+              description ?
+              <CardDescription lineLimit={3}>{description}</CardDescription> : ''
+            }
           </CardInformation>
         </ContentWrapper>
       </ShadowEffectCard>

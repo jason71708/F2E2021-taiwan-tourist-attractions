@@ -1,19 +1,26 @@
 import { tdxAPI } from '../../api'
-import { all, call, put, takeLatest } from 'redux-saga/effects'
+import { fork, call, put, take } from 'redux-saga/effects'
 import { ScenicSpotTourismInfo } from '../../models/ScenicSpot'
 import {
   fetchScenicSpotsSuccess,
   fetchScenicSpotsFailure
 } from '../actions/scenicSpots'
 import { scenicSpotTypes } from '../actions/scenicSpots/type'
+import { TDXAPIParameters } from '../../api/types'
+import { getPathWithQueryString } from '../../api/utils'
 
-const fetchScenicSpots = () => (
-  tdxAPI.get<ScenicSpotTourismInfo>('/v2/Tourism/ScenicSpot')
+const fetchScenicSpots = ({ page = 1, perpageCounts = 20, keywords, city }: TDXAPIParameters) => (
+  tdxAPI.get<ScenicSpotTourismInfo>(getPathWithQueryString('/v2/Tourism/ScenicSpot', {
+    page,
+    perpageCounts,
+    keywords,
+    city
+  }))
 )
 
-function* fetchScenicSpotsSaga() {
+function* fetchScenicSpotsSaga(parameters: TDXAPIParameters) {
   try {
-    const { data }: { data: ScenicSpotTourismInfo[] } = yield call(fetchScenicSpots)
+    const { data }: { data: ScenicSpotTourismInfo[] } = yield call(fetchScenicSpots, parameters)
     yield put(
       fetchScenicSpotsSuccess({
         scenicSpots: data
@@ -29,7 +36,10 @@ function* fetchScenicSpotsSaga() {
 }
 
 function* scenicSpotsSaga() {
-  yield all([takeLatest(scenicSpotTypes.FETCH_SCENICSPOT_REQUEST, fetchScenicSpotsSaga)])
+  while (true) {
+    const payload: TDXAPIParameters = yield take(scenicSpotTypes.FETCH_SCENICSPOT_REQUEST);
+    yield fork(fetchScenicSpotsSaga, payload)
+  }
 }
 
 export default scenicSpotsSaga

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '../../store/reducers'
 import { fetchActivitiesRequest } from '../../store/actions/activities'
+import { fetchScenicSpotsRequest } from '../../store/actions/scenicSpots'
 import CityCarousel from '../CityCarousel'
 import Banner from '../Banner'
 import SectionTitle from '../SectionTitle'
@@ -12,12 +13,16 @@ import SectionScenicSpot from '../SectionScenicSpot'
 
 function ScenicSpotsPage() {
   const dispatch = useDispatch()
-  const { pending, activities, error } = useSelector(
+  const activitiesState = useSelector(
     (state: RootState) => state.activities
+  )
+  const scenicSpotsState = useSelector(
+    (state: RootState) => state.scenicSpots
   )
 
   useEffect(() => {
-    dispatch(fetchActivitiesRequest({}))
+    dispatch(fetchActivitiesRequest())
+    dispatch(fetchScenicSpotsRequest())
   }, [])
 
   return(
@@ -30,13 +35,15 @@ function ScenicSpotsPage() {
         </ContentWrapper>
         <ContentWrapper>
           <SectionTitle title={'熱門活動'} type={Shapes.Triangle} />
-          {pending && <div>Loading...</div>}
-          {error && <div>Sorry, something wrong.</div>}
-          {!pending && !error && <SectionActivity activities={activities} />}
+          {activitiesState.pending && <div>Loading...</div>}
+          {activitiesState.error && <div>Sorry, something wrong.</div>}
+          {!activitiesState.pending && !activitiesState.error && <SectionActivity activities={activitiesState.activities} />}
         </ContentWrapper>
         <ContentWrapper>
           <SectionTitle title={'熱門景點'} type={Shapes.Triangle} />
-          <SectionScenicSpot />
+          {scenicSpotsState.pending && <div>Loading...</div>}
+          {scenicSpotsState.error && <div>Sorry, something wrong.</div>}
+          {!scenicSpotsState.pending && !scenicSpotsState.error && <SectionScenicSpot scenicSpots={scenicSpotsState.scenicSpots}/>}
         </ContentWrapper>
       </PageWrapper>
     </>

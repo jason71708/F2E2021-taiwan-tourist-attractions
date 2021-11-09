@@ -1,26 +1,26 @@
-import { activityTypes, ActivitiesActions, ActivitiesState } from '../actions/activities/type'
+import { scenicSpotTypes, ScenicSpotsActions, ScenicSpotsState } from '../actions/scenicSpots/type'
 
-const initialState: ActivitiesState = {
+const initialState: ScenicSpotsState = {
   pending: false,
-  activities: [],
+  scenicSpots: [],
   error: null
 }
 
-const activitiesReducer = (state = initialState, action: ActivitiesActions) => {
+const scenicSpotsReducer = (state = initialState, action: ScenicSpotsActions) => {
   switch (action.type) {
-    case activityTypes.FETCH_ACTIVITY_REQUEST:
+    case scenicSpotTypes.FETCH_SCENICSPOT_REQUEST:
       return {
         ...state,
         pending: true
       }
-    case activityTypes.FETCH_ACTIVITY_SUCCESS:
+    case scenicSpotTypes.FETCH_SCENICSPOT_SUCCESS:
       return {
         ...state,
         pending: false,
-        activities: action.payload.activities,
+        scenicSpots: action.payload.scenicSpots,
         error: null
       }
-    case activityTypes.FETCH_ACTIVITY_FAILURE:
+    case scenicSpotTypes.FETCH_SCENICSPOT_FAILURE:
       return {
         ...state,
         pending: false,
@@ -33,4 +33,4 @@ const activitiesReducer = (state = initialState, action: ActivitiesActions) => {
   }
 }
 
-export default activitiesReducer
+export default scenicSpotsReducer
