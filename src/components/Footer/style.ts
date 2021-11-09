@@ -3,7 +3,7 @@ import breakpoint from '../../styles/breakpoint'
 
 export const FooterWrapper = styled.footer`
   width: 100%;
-  padding: 8px 0;
+  padding: 12px 20px;
   background-color: #fff;
   margin: 0 auto;
   text-align: center;

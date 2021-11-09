@@ -88,3 +88,6 @@ export const InputStyled = styled.input`
     box-shadow: none;
   `}
 `
+
+export const SearchButton = styled.button`
+`

@@ -8,7 +8,8 @@ import {
   BannerContent,
   BannerDescription,
   InputRow,
-  InputStyled
+  InputStyled,
+  SearchButton
 } from './style'
 // import 景點圖 from '../../assets/image/景點.png'
 import 旅遊圖 from '../../assets/image/旅遊.png'
@@ -49,10 +50,6 @@ function Banner() {
           </BannerTitle>
           <BannerDescription>台北、台中、台南、屏東、宜蘭……遊遍台灣</BannerDescription>
           <InputRow>
-            <InputStyled type="text" placeholder="搜尋關鍵字" />
-            <SearchIcon />
-          </InputRow>
-          <InputRow>
             {location.pathname === Paths.ScenicSpots ? (
               <CustomSelect
                 key="ScenicSpot"
@@ -70,6 +67,12 @@ function Banner() {
             )}
             <CustomSelect isSearchable={false} options={cityOptions.slice(1)} defaultValue={cityOptions[0]}/>
             <LocationIcon />
+          </InputRow>
+          <InputRow>
+            <InputStyled type="text" placeholder="搜尋關鍵字" />
+            <SearchButton>
+              <SearchIcon />
+            </SearchButton>
           </InputRow>
         </BannerContent>
       </ShadowEffectCard>

@@ -53,6 +53,7 @@ export const CityImage = styled.div<CityImageProps>`
   height: 100%;
   background-size: cover;
   background-position: center;
+  cursor: pointer;
 `
 
 export const CityImageMask = styled.div`
@@ -61,7 +62,12 @@ export const CityImageMask = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: ${props => props.theme.colors.drak}33;
+  background-color: ${props => props.theme.colors.dark}33;
+  transition: background-color 0.2s linear;
+
+  &:hover {
+    background-color: ${props => props.theme.colors.dark}80;
+  }
 `
 
 export const CityContent = styled.div`

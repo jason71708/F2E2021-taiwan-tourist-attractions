@@ -96,6 +96,10 @@ export const CardTitle = styled.h5`
   line-height: 20px;
   ${LimitLineCss}
 
+  &:hover {
+    text-decoration: underline;
+  }
+
   ${breakpoint('lg')`
     font-size: 16px;
   `}
