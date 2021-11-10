@@ -14,9 +14,7 @@ import {
 // import 景點圖 from '../../assets/image/景點.png'
 import 旅遊圖 from '../../assets/image/旅遊.png'
 import 住宿圖 from '../../assets/image/住宿.png'
-import { ReactComponent as TitleImage } from '../../assets/image/title.svg'
-import { ReactComponent as SearchIcon } from '../../assets/image/search.svg'
-import { ReactComponent as LocationIcon } from '../../assets/image/location.svg'
+import Icons from '../Icons'
 import {
   ScenicSpotPageSeachOptions,
   AccommodationPageSeachOptions,
@@ -46,7 +44,7 @@ function Banner() {
         <BannerImage src={image} />
         <BannerContent>
           <BannerTitle>
-            <TitleImage />
+            <Icons.Title />
           </BannerTitle>
           <BannerDescription>台北、台中、台南、屏東、宜蘭……遊遍台灣</BannerDescription>
           <InputRow>
@@ -66,12 +64,12 @@ function Banner() {
               />
             )}
             <CustomSelect isSearchable={false} options={cityOptions.slice(1)} defaultValue={cityOptions[0]}/>
-            <LocationIcon />
+            <Icons.Location />
           </InputRow>
           <InputRow>
             <InputStyled type="text" placeholder="搜尋關鍵字" />
             <SearchButton>
-              <SearchIcon />
+              <Icons.Search />
             </SearchButton>
           </InputRow>
         </BannerContent>

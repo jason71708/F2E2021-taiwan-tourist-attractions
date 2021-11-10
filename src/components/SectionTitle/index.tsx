@@ -1,8 +1,7 @@
 import React from 'react'
 import { Title, TitleIconWrapper } from './styled'
 import { Shapes } from '../../constants'
-import { ReactComponent as SquareIcon } from '../../assets/image/square.svg'
-import { ReactComponent as TriangleIcon } from '../../assets/image/triangle.svg'
+import Icons from '../Icons'
 
 type SectionTitleProps = {
   title: string
@@ -12,11 +11,11 @@ type SectionTitleProps = {
 const currentShapeIcon = (type: Shapes) => {
   switch (type) {
     case Shapes.Square:
-      return (<SquareIcon />)
+      return (<Icons.SquareIcon />)
     case Shapes.Triangle:
-      return (<TriangleIcon />)
+      return (<Icons.Triangle />)
     default:
-      return (<SquareIcon />)
+      return (<Icons.SquareIcon />)
   }
 }
 

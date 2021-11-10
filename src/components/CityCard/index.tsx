@@ -10,7 +10,7 @@ import {
   CityIconWrapper,
   CityTitle 
 } from './style'
-import { ReactComponent as MapIcon } from '../../assets/image/map.svg'
+import Icons from '../Icons'
 
 export type City = {
   name: string
@@ -25,7 +25,7 @@ export const CityCard = ({ citys }: { citys: City[] }) => {
         <CityImageMask>
           <CityContent>
             <CityIconWrapper>
-              <MapIcon />
+              <Icons.Map/>
             </CityIconWrapper>
             <CityTitle>{city.name}</CityTitle>
           </CityContent>
@@ -37,7 +37,7 @@ export const CityCard = ({ citys }: { citys: City[] }) => {
         <CityImageMask>
           <CityContent>
             <CityIconWrapper>
-              <MapIcon />
+              <Icons.Map />
             </CityIconWrapper>
             <CityTitle>{city.name}</CityTitle>
           </CityContent>

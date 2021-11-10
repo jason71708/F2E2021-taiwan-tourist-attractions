@@ -5,8 +5,7 @@ import useCityGroups from './useCityGroups'
 import { Swiper as SwiperComponent, SwiperSlide } from 'swiper/react'
 import { CityCardGroup, CityCard } from '../CityCard'
 import { LeftButton, RightButton } from './style'
-import { ReactComponent as RightIcon } from '../../assets/image/vector-right.svg'
-import { ReactComponent as LeftIcon } from '../../assets/image/vector-left.svg'
+import Icons from '../Icons'
 import 'swiper/swiper.min.css'
 import './overwrite.css'
 
@@ -42,12 +41,12 @@ function CityCarousel() {
       {activeIndex !== 0 && isLgBp && <LeftButton onClick={() => {
         swiperRef.current?.slidePrev()
       }}>
-        <LeftIcon />
+        <Icons.VectorLeft />
       </LeftButton>}
       {activeIndex !== 1 && isLgBp && <RightButton onClick={() => {
         swiperRef.current?.slideNext()
       }}>
-        <RightIcon />
+        <Icons.VectorRight />
       </RightButton>}
     </>
   )

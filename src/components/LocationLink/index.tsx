@@ -1,6 +1,6 @@
 import React from 'react'
 import { LocationLinkWrapper, MapIconWrapper } from './style'
-import { ReactComponent as MapIcon } from '../../assets/image/map.svg'
+import Icons from '../Icons'
 
 type LocationLinkProps = {
   location: string
@@ -14,7 +14,7 @@ function LocationLink({ location, address }: LocationLinkProps) {
       target="_blank"
     >
       <MapIconWrapper>
-        <MapIcon />
+        <Icons.Map />
       </MapIconWrapper>
       {location}
     </LocationLinkWrapper>
