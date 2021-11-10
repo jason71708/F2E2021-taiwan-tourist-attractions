@@ -1,4 +1,5 @@
 import { ScenicSpotTourismInfo } from '../../../models/ScenicSpot'
+import { TDXAPIParameters } from '../../../api/types'
 
 export enum scenicSpotTypes {
   FETCH_SCENICSPOT_REQUEST = 'FETCH_SCENICSPOT_REQUEST',
@@ -22,6 +23,7 @@ export type FetchScenicSpotsFailurePayload = {
 
 export type FetchScenicSpotsRequest = {
   type: scenicSpotTypes.FETCH_SCENICSPOT_REQUEST
+  payload: TDXAPIParameters
 }
 
 export type FetchScenicSpotsSuccess = {

@@ -14,7 +14,7 @@ function SectionScenicSpot({ scenicSpots }: { scenicSpots: ScenicSpotTourismInfo
           location={scenicSpot.City}
           imageUrl={scenicSpot.Picture.PictureUrl1}
           address={scenicSpot.Address}
-          description={scenicSpot.Description}
+          description={scenicSpot.Description || scenicSpot.DescriptionDetail}
         />
       ))}
       {scenicSpots.length === 0 && <ProblemPlaceholder problem={Problems.NoResult}/>}

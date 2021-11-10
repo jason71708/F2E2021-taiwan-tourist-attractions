@@ -32,7 +32,7 @@ function* fetchActivitiesSaga(parameters: TDXAPIParameters) {
 
 function* activitiesSaga() {
   while (true) {
-    const payload: TDXAPIParameters = yield take(activityTypes.FETCH_ACTIVITY_REQUEST);
+    const { payload }: { payload: TDXAPIParameters } = yield take(activityTypes.FETCH_ACTIVITY_REQUEST);
     yield fork(fetchActivitiesSaga, payload)
   }
 }

@@ -32,7 +32,7 @@ function* fetchRestaurantsSaga(parameters: TDXAPIParameters) {
 
 function* restaurantsSaga() {
   while (true) {
-    const payload: TDXAPIParameters = yield take(restaurantTypes.FETCH_RESTAURANT_REQUEST);
+    const { payload }: { payload: TDXAPIParameters } = yield take(restaurantTypes.FETCH_RESTAURANT_REQUEST);
     yield fork(fetchRestaurantsSaga, payload)
   }
 }

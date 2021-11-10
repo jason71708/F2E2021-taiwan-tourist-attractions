@@ -9,17 +9,19 @@ import { scenicSpotTypes } from '../actions/scenicSpots/type'
 import { TDXAPIParameters } from '../../api/types'
 import { getPathWithQueryString } from '../../api/utils'
 
-const fetchScenicSpots = ({ page = 1, perpageCounts = 20, keywords, city }: TDXAPIParameters) => (
-  tdxAPI.get<ScenicSpotTourismInfo>(getPathWithQueryString('/v2/Tourism/ScenicSpot', {
+const fetchScenicSpots = ({ page = 1, perpageCounts = 20, keywords, city }: TDXAPIParameters) => {
+  return tdxAPI.get<ScenicSpotTourismInfo>(getPathWithQueryString('/v2/Tourism/ScenicSpot', {
     page,
     perpageCounts,
     keywords,
     city
   }))
-)
+}
 
 function* fetchScenicSpotsSaga(parameters: TDXAPIParameters) {
   try {
+    console.log('fetchScenicSpotsSaga')
+    console.log(parameters)
     const { data }: { data: ScenicSpotTourismInfo[] } = yield call(fetchScenicSpots, parameters)
     yield put(
       fetchScenicSpotsSuccess({
@@ -37,7 +39,7 @@ function* fetchScenicSpotsSaga(parameters: TDXAPIParameters) {
 
 function* scenicSpotsSaga() {
   while (true) {
-    const payload: TDXAPIParameters = yield take(scenicSpotTypes.FETCH_SCENICSPOT_REQUEST);
+    const { payload }: { payload: TDXAPIParameters } = yield take(scenicSpotTypes.FETCH_SCENICSPOT_REQUEST);
     yield fork(fetchScenicSpotsSaga, payload)
   }
 }

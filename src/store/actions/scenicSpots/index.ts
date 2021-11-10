@@ -6,9 +6,11 @@ import {
   FetchScenicSpotsFailure,
   FetchScenicSpotsFailurePayload
 } from './type'
+import { TDXAPIParameters } from '../../../api/types'
 
-export const fetchScenicSpotsRequest = (): FetchScenicSpotsRequest => ({
-  type: scenicSpotTypes.FETCH_SCENICSPOT_REQUEST
+export const fetchScenicSpotsRequest = (payload: TDXAPIParameters = {}): FetchScenicSpotsRequest => ({
+  type: scenicSpotTypes.FETCH_SCENICSPOT_REQUEST,
+  payload
 })
 
 export const fetchScenicSpotsSuccess = (

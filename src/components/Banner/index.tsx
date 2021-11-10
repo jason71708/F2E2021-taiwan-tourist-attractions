@@ -16,8 +16,8 @@ import 旅遊圖 from '../../assets/image/旅遊.png'
 import 住宿圖 from '../../assets/image/住宿.png'
 import Icons from '../Icons'
 import {
-  ScenicSpotPageSeachOptions,
-  AccommodationPageSeachOptions,
+  scenicSpotPageSeachOptions,
+  accommodationPageSeachOptions,
   cityOptions
 } from '../../constants'
 import { Paths } from '../../constants'
@@ -52,15 +52,15 @@ function Banner() {
               <CustomSelect
                 key="ScenicSpot"
                 isSearchable={false}
-                options={ScenicSpotPageSeachOptions}
-                defaultValue={ScenicSpotPageSeachOptions[0]}
+                options={scenicSpotPageSeachOptions}
+                defaultValue={scenicSpotPageSeachOptions[0]}
               />
             ) : (
               <CustomSelect
                 key="Accommodation"
                 isSearchable={false}
-                options={AccommodationPageSeachOptions}
-                defaultValue={AccommodationPageSeachOptions[0]}
+                options={accommodationPageSeachOptions}
+                defaultValue={accommodationPageSeachOptions[0]}
               />
             )}
             <CustomSelect isSearchable={false} options={cityOptions} defaultValue={cityOptions[0]}/>

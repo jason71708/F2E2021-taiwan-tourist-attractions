@@ -32,7 +32,7 @@ function* fetchHotelsSaga(parameters: TDXAPIParameters) {
 
 function* hotelsSaga() {
   while (true) {
-    const payload: TDXAPIParameters = yield take(hotelTypes.FETCH_HOTEL_REQUEST);
+    const { payload }: { payload: TDXAPIParameters } = yield take(hotelTypes.FETCH_HOTEL_REQUEST);
     yield fork(fetchHotelsSaga, payload)
   }
 }

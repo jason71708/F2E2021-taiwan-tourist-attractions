@@ -1,23 +1,58 @@
 export const TDX_API_URL = 'https://ptx.transportdata.tw/MOTC'
 
-export type QueryOption = {
-  value: null | string,
+export type QueryOption<T> = {
+  value: null | string | T,
   label: string
 }
 
-export const ScenicSpotPageSeachOptions: QueryOption[] = [
+export enum ScenicSpotPageSeachOptions {
+  ScenicSpot = 'ScenicSpot',
+  Activity = 'Activity'
+}
+
+export enum AccommodationPageSeachOptions {
+  Restaurant = 'Restaurant',
+  Accommodation = 'Accommodation'
+}
+
+export enum CityOptions {
+  Taipei = 'Taipei',
+  NewTaipei = 'NewTaipei',
+  Taoyuan = 'Taoyuan',
+  Taichung = 'Taichung',
+  Tainan = 'Tainan',
+  Kaohsiung = 'Kaohsiung',
+  Keelung = 'Keelung',
+  Hsinchu = 'Hsinchu',
+  HsinchuCounty = 'HsinchuCounty',
+  MiaoliCounty = 'MiaoliCounty',
+  ChanghuaCounty = 'ChanghuaCounty',
+  NantouCounty = 'NantouCounty',
+  YunlinCounty = 'YunlinCounty',
+  ChiayiCounty = 'ChiayiCounty',
+  Chiayi = 'Chiayi',
+  PingtungCounty = 'PingtungCounty',
+  YilanCounty = 'YilanCounty',
+  HualienCounty = 'HualienCounty',
+  TaitungCounty = 'TaitungCounty',
+  KinmenCounty = 'KinmenCounty',
+  PenghuCounty = 'PenghuCounty',
+  LienchiangCounty = 'LienchiangCounty'
+}
+
+export const scenicSpotPageSeachOptions: QueryOption<ScenicSpotPageSeachOptions>[] = [
   { value: null, label: '全部類別' },
-  { value: '景點', label: '景點' },
-  { value: '活動', label: '活動' }
+  { value: 'ScenicSpot', label: '景點' },
+  { value: 'Activity', label: '活動' }
 ]
 
-export const AccommodationPageSeachOptions: QueryOption[] = [
+export const accommodationPageSeachOptions: QueryOption<AccommodationPageSeachOptions>[] = [
   { value: null, label: '全部類別' },
-  { value: '美食', label: '美食' },
-  { value: '住宿', label: '住宿' }
+  { value: 'Restaurant', label: '美食' },
+  { value: 'Accommodation', label: '住宿' }
 ]
 
-export const cityOptions: QueryOption[] = [
+export const cityOptions: QueryOption<CityOptions>[] = [
   { value: null, label: '不分縣市' },
   { value: 'Taipei', label: '台北市' },
   { value: 'NewTaipei', label: '新北市' },
@@ -73,3 +108,6 @@ export enum Shapes {
 }
 
 export const generateStaticImagePath = (name: string, type: string) => `/images/${name}.${type}`
+
+export const generalCountPerPage = 20
+export const activityCountPerPage = 12

@@ -7,13 +7,18 @@ import CityCarousel from '../CityCarousel'
 import Banner from '../Banner'
 import SectionTitle from '../SectionTitle'
 import { PageWrapper, ContentWrapper } from './style'
-import { Shapes } from '../../constants'
+import { Shapes, generalCountPerPage, activityCountPerPage, ScenicSpotPageSeachOptions } from '../../constants'
 import SectionActivity from '../SectionActivity'
 import SectionScenicSpot from '../SectionScenicSpot'
 import LoadingPlaceholder from '../LoadingPlaceholder'
+import ProblemPlaceholder, { Problems } from '../ProblemPlaceholder'
+import useSearchQueryString, { SearchType } from '../../hooks/useSearchQueryString'
+import { TDXAPIParameters } from '../../api/types'
 
 function ScenicSpotsPage() {
   const dispatch = useDispatch()
+  const { keywords, city, category } = useSearchQueryString(SearchType.ScenicSpotPage)
+  console.log({ keywords, city, category })
   const activitiesState = useSelector(
     (state: RootState) => state.activities
   )
@@ -22,9 +27,22 @@ function ScenicSpotsPage() {
   )
 
   useEffect(() => {
-    dispatch(fetchActivitiesRequest())
-    dispatch(fetchScenicSpotsRequest())
-  }, [])
+    const payload: TDXAPIParameters = {}
+    if (city) {
+      payload.city = city
+    }
+    if (keywords) {
+      payload.keywords = keywords
+    }
+    if (category === ScenicSpotPageSeachOptions.Activity) {
+      dispatch(fetchActivitiesRequest({ ...payload, perpageCounts: activityCountPerPage }))
+    } else if (category === ScenicSpotPageSeachOptions.ScenicSpot) {
+      dispatch(fetchScenicSpotsRequest({ ...payload, perpageCounts: generalCountPerPage}))
+    } else {
+      dispatch(fetchActivitiesRequest({ ...payload, perpageCounts: 4}))
+      dispatch(fetchScenicSpotsRequest({ ...payload, perpageCounts: generalCountPerPage}))
+    }
+  }, [category, city, dispatch, keywords])
 
   return(
     <>
@@ -37,13 +55,13 @@ function ScenicSpotsPage() {
         <ContentWrapper>
           <SectionTitle title={'熱門活動'} type={Shapes.Triangle} />
           {activitiesState.pending && <LoadingPlaceholder />}
-          {activitiesState.error && <div>Sorry, something wrong.</div>}
+          {activitiesState.error && <ProblemPlaceholder problem={Problems.Error} />}
           {!activitiesState.pending && !activitiesState.error && <SectionActivity activities={activitiesState.activities} />}
         </ContentWrapper>
         <ContentWrapper>
           <SectionTitle title={'熱門景點'} type={Shapes.Triangle} />
           {scenicSpotsState.pending && <LoadingPlaceholder />}
-          {scenicSpotsState.error && <div>Sorry, something wrong.</div>}
+          {scenicSpotsState.error && <ProblemPlaceholder problem={Problems.Error} />}
           {!scenicSpotsState.pending && !scenicSpotsState.error && <SectionScenicSpot scenicSpots={scenicSpotsState.scenicSpots}/>}
         </ContentWrapper>
       </PageWrapper>
