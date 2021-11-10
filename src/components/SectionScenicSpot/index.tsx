@@ -2,6 +2,7 @@ import React from 'react'
 import Card from '../Card'
 import { SectionScenicSpotWrapper } from './style'
 import { ScenicSpotTourismInfo } from '../../models/ScenicSpot'
+import NoResultPlaceholder from '../NoResultPlaceholder'
 
 function SectionScenicSpot({ scenicSpots }: { scenicSpots: ScenicSpotTourismInfo[] }) {
   return (
@@ -16,6 +17,7 @@ function SectionScenicSpot({ scenicSpots }: { scenicSpots: ScenicSpotTourismInfo
           description={scenicSpot.Description}
         />
       ))}
+      {scenicSpots.length === 0 && <NoResultPlaceholder />}
     </SectionScenicSpotWrapper>
   )
 }

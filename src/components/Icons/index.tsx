@@ -11,6 +11,7 @@ import { ReactComponent as Search } from '../../assets/image/search.svg'
 import { ReactComponent as VectorLeft } from '../../assets/image/vector-left.svg'
 import { ReactComponent as VectorRight } from '../../assets/image/vector-right.svg'
 import { ReactComponent as Title } from '../../assets/image/title.svg'
+import { ReactComponent as NoResultIcon } from '../../assets/image/no-result.svg'
 
 const Icons = {
   CircleIcon,
@@ -25,7 +26,8 @@ const Icons = {
   Search,
   VectorLeft,
   VectorRight,
-  Title
+  Title,
+  NoResultIcon
 }
 
 export default Icons
