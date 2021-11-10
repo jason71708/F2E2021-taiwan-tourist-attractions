@@ -20,8 +20,6 @@ const fetchScenicSpots = ({ page = 1, perpageCounts = 20, keywords, city }: TDXA
 
 function* fetchScenicSpotsSaga(parameters: TDXAPIParameters) {
   try {
-    console.log('fetchScenicSpotsSaga')
-    console.log(parameters)
     const { data }: { data: ScenicSpotTourismInfo[] } = yield call(fetchScenicSpots, parameters)
     yield put(
       fetchScenicSpotsSuccess({

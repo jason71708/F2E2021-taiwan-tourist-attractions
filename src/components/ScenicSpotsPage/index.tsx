@@ -18,7 +18,6 @@ import { TDXAPIParameters } from '../../api/types'
 function ScenicSpotsPage() {
   const dispatch = useDispatch()
   const { keywords, city, category } = useSearchQueryString(SearchType.ScenicSpotPage)
-  console.log({ keywords, city, category })
   const activitiesState = useSelector(
     (state: RootState) => state.activities
   )
