@@ -6,13 +6,13 @@ export type QueryOption = {
 }
 
 export const ScenicSpotPageSeachOptions: QueryOption[] = [
-  { value: null, label: '類別' },
+  { value: null, label: '全部類別' },
   { value: '景點', label: '景點' },
   { value: '活動', label: '活動' }
 ]
 
 export const AccommodationPageSeachOptions: QueryOption[] = [
-  { value: null, label: '類別' },
+  { value: null, label: '全部類別' },
   { value: '美食', label: '美食' },
   { value: '住宿', label: '住宿' }
 ]

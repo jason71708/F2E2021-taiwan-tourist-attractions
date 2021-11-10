@@ -20,7 +20,7 @@ function NavBar() {
         <LinkIcon src={triangleIcon} />
         <Link to={Paths.ScenicSpots}>
           <LinkText match={location.pathname === Paths.ScenicSpots} color={theme.colors.primary}>
-            台灣景點
+            景點活動
           </LinkText>
         </Link>
       </LinkWrapper>
@@ -36,7 +36,7 @@ function NavBar() {
         <LinkIcon src={circleIcon} />
         <Link to={Paths.Traffic}>
           <LinkText match={location.pathname === Paths.Traffic} color={theme.colors.tertiary}>
-            景點交通
+            交通查詢
           </LinkText>
         </Link>
       </LinkWrapper>

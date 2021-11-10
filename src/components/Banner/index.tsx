@@ -52,18 +52,18 @@ function Banner() {
               <CustomSelect
                 key="ScenicSpot"
                 isSearchable={false}
-                options={ScenicSpotPageSeachOptions.slice(1)}
+                options={ScenicSpotPageSeachOptions}
                 defaultValue={ScenicSpotPageSeachOptions[0]}
               />
             ) : (
               <CustomSelect
                 key="Accommodation"
                 isSearchable={false}
-                options={AccommodationPageSeachOptions.slice(1)}
+                options={AccommodationPageSeachOptions}
                 defaultValue={AccommodationPageSeachOptions[0]}
               />
             )}
-            <CustomSelect isSearchable={false} options={cityOptions.slice(1)} defaultValue={cityOptions[0]}/>
+            <CustomSelect isSearchable={false} options={cityOptions} defaultValue={cityOptions[0]}/>
             <Icons.Location />
           </InputRow>
           <InputRow>
