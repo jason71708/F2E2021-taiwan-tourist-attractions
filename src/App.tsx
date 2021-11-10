@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import ScenicSpotsPage from './components/ScenicSpotsPage'
 import Banner from './components/Banner'
 import { Paths } from './constants'
+import ProblemPlaceholder, { Problems } from './components/ProblemPlaceholder'
 
 const AppWrapper = styled.div`
   color: ${props => props.theme.colors.drak};
@@ -26,7 +27,7 @@ function App() {
           <Route path={Paths.ScenicSpots} element={<ScenicSpotsPage />}></Route>
           <Route path={Paths.Accommodations} element={<Banner />}></Route>
           <Route path={Paths.Traffic} element={<div>3</div>}></Route>
-          <Route path="*" element={<div>NotFound</div>} />
+          <Route path="*" element={<ProblemPlaceholder problem={Problems.PageNotFound}/>} />
         </Routes>
         <Footer />
       </AppWrapper>

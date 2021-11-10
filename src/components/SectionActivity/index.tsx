@@ -2,7 +2,7 @@ import React from 'react'
 import ActivityCard from '../ActivityCard'
 import { SectionActivityWrapper } from './style'
 import { ActivityTourismInfo } from '../../models/Activity'
-import NoResultPlaceholder from '../NoResultPlaceholder'
+import ProblemPlaceholder, { Problems } from '../ProblemPlaceholder'
 
 function SectionActivity({ activities }: { activities: ActivityTourismInfo[] }) {
   return (
@@ -17,7 +17,7 @@ function SectionActivity({ activities }: { activities: ActivityTourismInfo[] }) 
           address={activity.Address}
         />
       ))}
-      {activities.length === 0 && <NoResultPlaceholder />}
+      {activities.length === 0 && <ProblemPlaceholder problem={Problems.NoResult}/>}
     </SectionActivityWrapper>
   )
 }
