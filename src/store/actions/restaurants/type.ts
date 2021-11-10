@@ -1,4 +1,5 @@
 import { RestaurantTourismInfo } from '../../../models/Restaurant'
+import { TDXAPIParameters } from '../../../api/types'
 
 export enum restaurantTypes {
   FETCH_RESTAURANT_REQUEST = 'FETCH_RESTAURANT_REQUEST',
@@ -22,6 +23,7 @@ export type FetchRestaurantsFailurePayload = {
 
 export type FetchRestaurantsRequest = {
   type: restaurantTypes.FETCH_RESTAURANT_REQUEST
+  payload: TDXAPIParameters
 }
 
 export type FetchRestaurantsSuccess = {

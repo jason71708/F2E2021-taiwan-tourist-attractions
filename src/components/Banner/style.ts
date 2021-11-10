@@ -57,7 +57,7 @@ export const BannerContent = styled.div`
 export const BannerDescription = styled.span`
   display: none;
   padding-left: 8px;
-  color: #fff;
+  color: ${props => props.theme.colors.dark};
   font-size: 14px;
   margin-bottom: 16px;
 

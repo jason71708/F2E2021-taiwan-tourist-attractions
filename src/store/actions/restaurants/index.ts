@@ -6,9 +6,11 @@ import {
   FetchRestaurantsFailure,
   FetchRestaurantsFailurePayload
 } from './type'
+import { TDXAPIParameters } from '../../../api/types'
 
-export const fetchRestaurantsRequest = (): FetchRestaurantsRequest => ({
-  type: restaurantTypes.FETCH_RESTAURANT_REQUEST
+export const fetchRestaurantsRequest = (payload: TDXAPIParameters = {}): FetchRestaurantsRequest => ({
+  type: restaurantTypes.FETCH_RESTAURANT_REQUEST,
+  payload
 })
 
 export const fetchRestaurantsSuccess = (

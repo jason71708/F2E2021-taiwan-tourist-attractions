@@ -1,19 +1,21 @@
 import { tdxAPI } from '../../api'
-import { all, call, put, takeLatest } from 'redux-saga/effects'
+import { fork, call, put, take } from 'redux-saga/effects'
 import { RestaurantTourismInfo } from '../../models/Restaurant'
 import {
   fetchRestaurantsSuccess,
   fetchRestaurantsFailure
 } from '../actions/restaurants'
 import { restaurantTypes } from '../actions/restaurants/type'
+import { TDXAPIParameters } from '../../api/types'
+import { getPathWithQueryString } from '../../api/utils'
 
-const fetchRestaurants = () => (
-  tdxAPI.get<RestaurantTourismInfo>('/v2/Tourism/Restaurant')
+const fetchRestaurants = (parameters: TDXAPIParameters) => (
+  tdxAPI.get<RestaurantTourismInfo>(getPathWithQueryString('/v2/Tourism/Restaurant', parameters))
 )
 
-function* fetchRestaurantsSaga() {
+function* fetchRestaurantsSaga(parameters: TDXAPIParameters) {
   try {
-    const { data }: { data: RestaurantTourismInfo[] } = yield call(fetchRestaurants)
+    const { data }: { data: RestaurantTourismInfo[] } = yield call(fetchRestaurants, parameters)
     yield put(
       fetchRestaurantsSuccess({
         restaurants: data
@@ -29,7 +31,10 @@ function* fetchRestaurantsSaga() {
 }
 
 function* restaurantsSaga() {
-  yield all([takeLatest(restaurantTypes.FETCH_RESTAURANT_REQUEST, fetchRestaurantsSaga)])
+  while (true) {
+    const payload: TDXAPIParameters = yield take(restaurantTypes.FETCH_RESTAURANT_REQUEST);
+    yield fork(fetchRestaurantsSaga, payload)
+  }
 }
 
 export default restaurantsSaga

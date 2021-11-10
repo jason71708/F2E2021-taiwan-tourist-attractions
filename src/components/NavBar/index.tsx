@@ -7,7 +7,7 @@ import { ThemeContext } from 'styled-components'
 import { NavWrapper, LinkWrapper, LinkIcon, LinkText } from './style'
 import triangleIcon from '../../assets/image/triangle-icon.svg'
 import squareIcon from '../../assets/image/square-icon.svg'
-import circleIcon from '../../assets/image/circle-icon.svg'
+// import circleIcon from '../../assets/image/circle-icon.svg'
 import { Paths } from '../../constants'
 
 function NavBar() {
@@ -32,14 +32,14 @@ function NavBar() {
           </LinkText>
         </Link>
       </LinkWrapper>
-      <LinkWrapper>
+      {/* <LinkWrapper>
         <LinkIcon src={circleIcon} />
         <Link to={Paths.Traffic}>
           <LinkText match={location.pathname === Paths.Traffic} color={theme.colors.tertiary}>
             交通查詢
           </LinkText>
         </Link>
-      </LinkWrapper>
+      </LinkWrapper> */}
     </NavWrapper>
   )
 }

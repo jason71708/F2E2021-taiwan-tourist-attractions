@@ -17,4 +17,9 @@ export const TitleIconWrapper = styled.span`
   width: 20px;
   height: 20px;
   margin-right: 8px;
+
+  & svg {
+    width: 100%;
+    height: 100%;
+  }
 `
