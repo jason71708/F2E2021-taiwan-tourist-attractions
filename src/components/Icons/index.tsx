@@ -1,6 +1,7 @@
 import { ReactComponent as CircleIcon } from '../../assets/image/circle-icon.svg'
 import { ReactComponent as SquareIcon } from '../../assets/image/square-icon.svg'
 import { ReactComponent as TriangleIcon } from '../../assets/image/triangle-icon.svg'
+import { ReactComponent as Circle } from '../../assets/image/circle.svg'
 import { ReactComponent as Square } from '../../assets/image/square.svg'
 import { ReactComponent as Triangle } from '../../assets/image/triangle.svg'
 import { ReactComponent as Logo } from '../../assets/image/logo.svg'
@@ -15,6 +16,7 @@ const Icons = {
   CircleIcon,
   SquareIcon,
   TriangleIcon,
+  Circle,
   Square,
   Triangle,
   Logo,

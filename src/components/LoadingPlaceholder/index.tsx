@@ -1,8 +1,20 @@
 import React from 'react'
+import Icons from '../Icons'
+import { LoadingWrapper, ElementWrapper } from './style'
 
 function LoadingPlaceholder() {
   return (
-    <div>123</div>
+    <LoadingWrapper>
+      <ElementWrapper>
+        <Icons.Triangle />
+      </ElementWrapper>
+      <ElementWrapper>
+        <Icons.Square />
+      </ElementWrapper>
+      <ElementWrapper>
+        <Icons.Circle />
+      </ElementWrapper>
+    </LoadingWrapper>
   )
 }
 

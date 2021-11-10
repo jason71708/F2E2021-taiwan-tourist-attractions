@@ -10,6 +10,7 @@ import { PageWrapper, ContentWrapper } from './style'
 import { Shapes } from '../../constants'
 import SectionActivity from '../SectionActivity'
 import SectionScenicSpot from '../SectionScenicSpot'
+import LoadingPlaceholder from '../LoadingPlaceholder'
 
 function ScenicSpotsPage() {
   const dispatch = useDispatch()
@@ -35,13 +36,13 @@ function ScenicSpotsPage() {
         </ContentWrapper>
         <ContentWrapper>
           <SectionTitle title={'熱門活動'} type={Shapes.Triangle} />
-          {activitiesState.pending && <div>Loading...</div>}
+          {activitiesState.pending && <LoadingPlaceholder />}
           {activitiesState.error && <div>Sorry, something wrong.</div>}
           {!activitiesState.pending && !activitiesState.error && <SectionActivity activities={activitiesState.activities} />}
         </ContentWrapper>
         <ContentWrapper>
           <SectionTitle title={'熱門景點'} type={Shapes.Triangle} />
-          {scenicSpotsState.pending && <div>Loading...</div>}
+          {scenicSpotsState.pending && <LoadingPlaceholder />}
           {scenicSpotsState.error && <div>Sorry, something wrong.</div>}
           {!scenicSpotsState.pending && !scenicSpotsState.error && <SectionScenicSpot scenicSpots={scenicSpotsState.scenicSpots}/>}
         </ContentWrapper>
