@@ -9,7 +9,7 @@ import SectionTitle from '../SectionTitle'
 import { PageWrapper, ContentWrapper } from './style'
 import { Shapes, generalCountPerPage, activityCountPerPage, ScenicSpotPageSeachOptions } from '../../constants'
 import SectionActivity from '../SectionActivity'
-import SectionScenicSpot from '../SectionScenicSpot'
+import SectionCards from '../SectionCards'
 import LoadingPlaceholder from '../LoadingPlaceholder'
 import ProblemPlaceholder, { Problems } from '../ProblemPlaceholder'
 import useSearchQueryString, { SearchType } from '../../hooks/useSearchQueryString'
@@ -61,7 +61,7 @@ function ScenicSpotsPage() {
           <SectionTitle title={'熱門景點'} type={Shapes.Triangle} />
           {scenicSpotsState.pending && <LoadingPlaceholder />}
           {scenicSpotsState.error && <ProblemPlaceholder problem={Problems.Error} />}
-          {!scenicSpotsState.pending && !scenicSpotsState.error && <SectionScenicSpot items={scenicSpotsState.scenicSpots}/>}
+          {!scenicSpotsState.pending && !scenicSpotsState.error && <SectionCards items={scenicSpotsState.scenicSpots}/>}
         </ContentWrapper>
       </PageWrapper>
     </>

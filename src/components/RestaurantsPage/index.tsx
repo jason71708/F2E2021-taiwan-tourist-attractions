@@ -8,8 +8,9 @@ import Banner from '../Banner'
 import SectionTitle from '../SectionTitle'
 import { PageWrapper, ContentWrapper } from './style'
 import { Shapes } from '../../constants'
-import SectionScenicSpot from '../SectionScenicSpot'
+import SectionCards from '../SectionCards'
 import LoadingPlaceholder from '../LoadingPlaceholder'
+import ProblemPlaceholder, { Problems } from '../ProblemPlaceholder'
 
 function RestaurantsPage() {
   const dispatch = useDispatch()
@@ -36,14 +37,14 @@ function RestaurantsPage() {
         <ContentWrapper>
           <SectionTitle title={'熱門美食'} type={Shapes.Square} />
           {restaurantsState.pending && <LoadingPlaceholder />}
-          {restaurantsState.error && <div>Sorry, something wrong.</div>}
-          {!restaurantsState.pending && !restaurantsState.error && <SectionScenicSpot items={restaurantsState.restaurants}/>}
+          {restaurantsState.error && <ProblemPlaceholder problem={Problems.Error} />}
+          {!restaurantsState.pending && !restaurantsState.error && <SectionCards items={restaurantsState.restaurants}/>}
         </ContentWrapper>
         <ContentWrapper>
           <SectionTitle title={'推薦住宿'} type={Shapes.Square} />
           {hotelsState.pending && <LoadingPlaceholder />}
-          {hotelsState.error && <div>Sorry, something wrong.</div>}
-          {!hotelsState.pending && !hotelsState.error && <SectionScenicSpot items={hotelsState.hotels} />}
+          {hotelsState.error && <ProblemPlaceholder problem={Problems.Error} />}
+          {!hotelsState.pending && !hotelsState.error && <SectionCards items={hotelsState.hotels} />}
         </ContentWrapper>
       </PageWrapper>
     </>

@@ -1,14 +1,14 @@
 import React from 'react'
 import Card from '../Card'
-import { SectionScenicSpotWrapper } from './style'
+import { SectionCardsWrapper } from './style'
 import { ScenicSpotTourismInfo } from '../../models/ScenicSpot'
 import { HotelTourismInfo } from '../../models/Hotel'
 import { RestaurantTourismInfo } from '../../models/Restaurant'
 import ProblemPlaceholder, { Problems } from '../ProblemPlaceholder'
 
-function SectionScenicSpot({ items }: { items: ScenicSpotTourismInfo[] | HotelTourismInfo[] | RestaurantTourismInfo[] }) {
+function SectionCards({ items }: { items: ScenicSpotTourismInfo[] | HotelTourismInfo[] | RestaurantTourismInfo[] }) {
   return (
-    <SectionScenicSpotWrapper>
+    <SectionCardsWrapper>
       {items.map(item => (
         <Card
           key={item.ID}
@@ -20,8 +20,8 @@ function SectionScenicSpot({ items }: { items: ScenicSpotTourismInfo[] | HotelTo
         />
       ))}
       {items.length === 0 && <ProblemPlaceholder problem={Problems.NoResult}/>}
-    </SectionScenicSpotWrapper>
+    </SectionCardsWrapper>
   )
 }
 
-export default SectionScenicSpot
+export default SectionCards
