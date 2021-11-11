@@ -8,9 +8,12 @@ import {
 import { hotelTypes } from '../actions/hotels/type'
 import { TDXAPIParameters } from '../../api/types'
 import { getPathWithQueryString } from '../../api/utils'
+import { getAuthorizationHeader } from '../../api/utils'
 
 const fetchHotels = (parameters: TDXAPIParameters) => (
-  tdxAPI.get<HotelTourismInfo>(getPathWithQueryString('/v2/Tourism/Hotel', parameters))
+  tdxAPI.get<HotelTourismInfo>(getPathWithQueryString('/v2/Tourism/Hotel', parameters), {
+    headers: getAuthorizationHeader()
+  })
 )
 
 function* fetchHotelsSaga(parameters: TDXAPIParameters) {

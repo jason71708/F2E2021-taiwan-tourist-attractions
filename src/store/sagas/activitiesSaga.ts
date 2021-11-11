@@ -8,9 +8,12 @@ import {
 import { activityTypes } from '../actions/activities/type'
 import { TDXAPIParameters } from '../../api/types'
 import { getPathWithQueryString } from '../../api/utils'
+import { getAuthorizationHeader } from '../../api/utils'
 
 const fetchActivities = (parameters: TDXAPIParameters) => (
-  tdxAPI.get<ActivityTourismInfo>(getPathWithQueryString('/v2/Tourism/Activity', parameters))
+  tdxAPI.get<ActivityTourismInfo>(getPathWithQueryString('/v2/Tourism/Activity', parameters), {
+    headers: getAuthorizationHeader()
+  })
 )
 
 function* fetchActivitiesSaga(parameters: TDXAPIParameters) {

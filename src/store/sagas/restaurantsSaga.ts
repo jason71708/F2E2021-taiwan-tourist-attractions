@@ -8,9 +8,12 @@ import {
 import { restaurantTypes } from '../actions/restaurants/type'
 import { TDXAPIParameters } from '../../api/types'
 import { getPathWithQueryString } from '../../api/utils'
+import { getAuthorizationHeader } from '../../api/utils'
 
 const fetchRestaurants = (parameters: TDXAPIParameters) => (
-  tdxAPI.get<RestaurantTourismInfo>(getPathWithQueryString('/v2/Tourism/Restaurant', parameters))
+  tdxAPI.get<RestaurantTourismInfo>(getPathWithQueryString('/v2/Tourism/Restaurant', parameters), {
+    headers: getAuthorizationHeader()
+  })
 )
 
 function* fetchRestaurantsSaga(parameters: TDXAPIParameters) {
