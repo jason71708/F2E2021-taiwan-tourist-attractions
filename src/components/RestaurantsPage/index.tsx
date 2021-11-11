@@ -17,7 +17,7 @@ import { Element as ScrollTarget } from 'react-scroll'
 
 function RestaurantsPage() {
   const dispatch = useDispatch()
-  const { keywords, city, category } = useSearchQueryString(SearchType.ScenicSpotPage)
+  const { keywords, city, category } = useSearchQueryString(SearchType.AccommodationPage)
   const hotelsState = useSelector(
     (state: RootState) => state.hotels
   )
@@ -27,17 +27,11 @@ function RestaurantsPage() {
 
   useEffect(() => {
     const payload: TDXAPIParameters = {}
-    console.log('category')
-    console.log(category)
-    console.log(category)
-    console.log(category)
-    console.log(category)
-    console.log(category)
     if (city) {
       payload.city = city
     }
     if (keywords) {
-      payload.keywords = keywords
+      payload.keywords = encodeURIComponent(keywords)
     }
     if (category === AccommodationPageSeachOptions.Accommodation) {
       dispatch(fetchHotelsRequest({ ...payload, perpageCounts: generalCountPerPage }))

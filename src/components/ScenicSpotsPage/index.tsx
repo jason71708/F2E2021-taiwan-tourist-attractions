@@ -32,7 +32,7 @@ function ScenicSpotsPage() {
       payload.city = city
     }
     if (keywords) {
-      payload.keywords = keywords
+      payload.keywords = encodeURIComponent(keywords)
     }
     if (category === ScenicSpotPageSeachOptions.Activity) {
       dispatch(fetchActivitiesRequest({ ...payload, perpageCounts: activityCountPerPage }))

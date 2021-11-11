@@ -1,14 +1,14 @@
-import { generatePath, useNavigate } from 'react-router-dom'
+import { generatePath, useNavigate, NavigateOptions } from 'react-router-dom'
 
 function useNavigateParams() {
   const navigate = useNavigate()
 
-  return (url: string, params: string) => {
+  return (url: string, params: string, options?: NavigateOptions) => {
     const path = generatePath(':url?:queryString', {
       url,
       queryString: params
     })
-    navigate(path)
+    navigate(path, options)
   }
 }
 

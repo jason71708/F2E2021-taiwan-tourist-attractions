@@ -21,7 +21,7 @@ function useSearchQueryString(searchType: SearchType) {
   const searchParams = useSearchParams()
 
   const queryStrings = useMemo(() => {
-    const keywords: SearchQueryString = searchParams.get('keywords')?.trim() || null
+    const keywords: SearchQueryString = searchParams.get('keywords')?.trim() || ''
     let city: SearchQueryString = searchParams.get('city')?.trim() || null
     let category: SearchQueryString = searchParams.get('category')?.trim() || null
     city = isCorrectOption<string | null>(city, cityValues, cityValues[0])

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import ShadowEffectCard from '../ShadowEffectCard'
 import CustomSelect from '../CustomSelect'
 import {
@@ -47,16 +47,21 @@ function Banner({ searchType }: { searchType: SearchType }) {
   const location = useLocation()
   const queryStrings = useSearchQueryString(SearchType[searchType])
   const image = currentPathImage(location)
-  const [keywords, setKeywords] = useState<string>(queryStrings.keywords || '')
+  const [keywords, setKeywords] = useState<string>(queryStrings.keywords)
   const [category, setCategory] = useState<string | null>(queryStrings.category)
   const [city, setCity] = useState<string | null>(queryStrings.city)
 
-  const submitSearch = () => {
+  const getSearchParmsString = useCallback((queryStrings: ReturnType<typeof useSearchQueryString>) => {
+    const { keywords, category, city } = queryStrings
     const searchParams  = new URLSearchParams()
     if (keywords.trim()) searchParams.set('keywords', keywords.trim())
     if (category) searchParams.set('category', category)
     if (city) searchParams.set('city', city)
-    navigateParams(location.pathname, searchParams.toString())
+    return searchParams.toString()
+  }, [])
+
+  const submitSearch = () => {
+    navigateParams(location.pathname, getSearchParmsString(queryStrings))
     scroller.scrollTo(ScrollTargetNames.AfterSearch, {
       duration: 1000,
       delay: 100,
@@ -64,6 +69,12 @@ function Banner({ searchType }: { searchType: SearchType }) {
       offset: -20
     })
   }
+
+  useEffect(() => {
+    const searchParmsString = getSearchParmsString(queryStrings)
+    if (location.search.slice(1) === searchParmsString) return
+     navigateParams(location.pathname, searchParmsString, { replace: true })
+  }, [getSearchParmsString, location.pathname, location.search, navigateParams, queryStrings])
   
   useEffect(() => {
     if (location.search === '') {
