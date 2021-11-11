@@ -1,12 +1,18 @@
 import styled from 'styled-components'
 import breakpoint, { breakpoints } from '../../styles/breakpoint'
 import { LimitLineCss } from '../../styles/helper'
+import imagePlaceholder from '../../assets/images/image-placeholder.svg'
 
 export const CardWrapper = styled.div`
   width: calc((100% - 8px) / 2);
   height: 230px;
   margin-bottom: 18px;
   margin-right: 8px;
+  transition: transform 0.2s linear;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
 
   ${breakpoint('md')`
     width: calc((100% - 36px) / 4);
@@ -71,7 +77,7 @@ export const CardImage = styled.div<CardImageProps>`
   flex-shrink: 0;
   width: 100%;
   height: 120px;
-  background-image: url(${props => props.backgoundUrl});
+  background-image: url(${props => props.backgoundUrl}), url(${imagePlaceholder});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

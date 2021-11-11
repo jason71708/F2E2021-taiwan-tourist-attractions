@@ -1,17 +1,18 @@
-import { ReactComponent as CircleIcon } from '../../assets/image/circle-icon.svg'
-import { ReactComponent as SquareIcon } from '../../assets/image/square-icon.svg'
-import { ReactComponent as TriangleIcon } from '../../assets/image/triangle-icon.svg'
-import { ReactComponent as Circle } from '../../assets/image/circle.svg'
-import { ReactComponent as Square } from '../../assets/image/square.svg'
-import { ReactComponent as Triangle } from '../../assets/image/triangle.svg'
-import { ReactComponent as Logo } from '../../assets/image/logo.svg'
-import { ReactComponent as Location } from '../../assets/image/location.svg'
-import { ReactComponent as Map } from '../../assets/image/map.svg'
-import { ReactComponent as Search } from '../../assets/image/search.svg'
-import { ReactComponent as VectorLeft } from '../../assets/image/vector-left.svg'
-import { ReactComponent as VectorRight } from '../../assets/image/vector-right.svg'
-import { ReactComponent as Title } from '../../assets/image/title.svg'
-import { ReactComponent as ProblemIcon } from '../../assets/image/problem.svg'
+import { ReactComponent as CircleIcon } from '../../assets/images/circle-icon.svg'
+import { ReactComponent as SquareIcon } from '../../assets/images/square-icon.svg'
+import { ReactComponent as TriangleIcon } from '../../assets/images/triangle-icon.svg'
+import { ReactComponent as Circle } from '../../assets/images/circle.svg'
+import { ReactComponent as Square } from '../../assets/images/square.svg'
+import { ReactComponent as Triangle } from '../../assets/images/triangle.svg'
+import { ReactComponent as Logo } from '../../assets/images/logo.svg'
+import { ReactComponent as Location } from '../../assets/images/location.svg'
+import { ReactComponent as Map } from '../../assets/images/map.svg'
+import { ReactComponent as Search } from '../../assets/images/search.svg'
+import { ReactComponent as VectorLeft } from '../../assets/images/vector-left.svg'
+import { ReactComponent as VectorRight } from '../../assets/images/vector-right.svg'
+import { ReactComponent as Title } from '../../assets/images/title.svg'
+import { ReactComponent as ProblemIcon } from '../../assets/images/problem.svg'
+import { ReactComponent as ImagePlaceholder } from '../../assets/images/image-placeholder.svg'
 
 const Icons = {
   CircleIcon,
@@ -27,7 +28,8 @@ const Icons = {
   VectorLeft,
   VectorRight,
   Title,
-  ProblemIcon
+  ProblemIcon,
+  ImagePlaceholder
 }
 
 export default Icons

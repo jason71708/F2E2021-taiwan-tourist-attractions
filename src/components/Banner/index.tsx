@@ -11,9 +11,9 @@ import {
   InputStyled,
   SearchButton
 } from './style'
-// import 景點圖 from '../../assets/image/景點.png'
-import 旅遊圖 from '../../assets/image/旅遊.png'
-import 住宿圖 from '../../assets/image/住宿.png'
+// import 景點圖 from '../../assets/images/景點.png'
+import 旅遊圖 from '../../assets/images/旅遊.png'
+import 住宿圖 from '../../assets/images/住宿.png'
 import Icons from '../Icons'
 import {
   scenicSpotPageSeachOptions,
@@ -24,6 +24,7 @@ import { Paths } from '../../constants'
 import { useLocation, Location } from 'react-router-dom'
 import { ScenicSpotPageSeachOptions, AccommodationPageSeachOptions, CityOptions, QueryOption } from '../../constants'
 import useNavigateParams from '../../hooks/useNavigateParams'
+import { scroller } from 'react-scroll'
 
 const currentPathImage = (location: Location) => {
   switch (location.pathname) {
@@ -50,6 +51,12 @@ function Banner() {
     if (category) searchParams.set('category', category)
     if (city) searchParams.set('city', city)
     navigateParams(location.pathname, searchParams.toString())
+    scroller.scrollTo('scrollTarget', {
+      duration: 1000,
+      delay: 100,
+      smooth: true,
+      offset: -20
+    })
   }
 
   return (

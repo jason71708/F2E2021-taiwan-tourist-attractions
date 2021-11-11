@@ -5,9 +5,9 @@ import {
 } from 'react-router-dom'
 import { ThemeContext } from 'styled-components'
 import { NavWrapper, LinkWrapper, LinkIcon, LinkText } from './style'
-import triangleIcon from '../../assets/image/triangle-icon.svg'
-import squareIcon from '../../assets/image/square-icon.svg'
-// import circleIcon from '../../assets/image/circle-icon.svg'
+import triangleIcon from '../../assets/images/triangle-icon.svg'
+import squareIcon from '../../assets/images/square-icon.svg'
+// import circleIcon from '../../assets/images/circle-icon.svg'
 import { Paths } from '../../constants'
 
 function NavBar() {
