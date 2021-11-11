@@ -61,7 +61,7 @@ function ScenicSpotsPage() {
           <SectionTitle title={'熱門景點'} type={Shapes.Triangle} />
           {scenicSpotsState.pending && <LoadingPlaceholder />}
           {scenicSpotsState.error && <ProblemPlaceholder problem={Problems.Error} />}
-          {!scenicSpotsState.pending && !scenicSpotsState.error && <SectionScenicSpot scenicSpots={scenicSpotsState.scenicSpots}/>}
+          {!scenicSpotsState.pending && !scenicSpotsState.error && <SectionScenicSpot items={scenicSpotsState.scenicSpots}/>}
         </ContentWrapper>
       </PageWrapper>
     </>

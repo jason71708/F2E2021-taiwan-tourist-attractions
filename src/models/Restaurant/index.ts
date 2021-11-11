@@ -4,6 +4,7 @@ export type RestaurantTourismInfo = {
   readonly ID: string
   readonly Name: string
   Description?: string
+  DescriptionDetail?: string
   Address?: string
   ZipCode?: string
   Phone?: string

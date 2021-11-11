@@ -2,22 +2,24 @@ import React from 'react'
 import Card from '../Card'
 import { SectionScenicSpotWrapper } from './style'
 import { ScenicSpotTourismInfo } from '../../models/ScenicSpot'
+import { HotelTourismInfo } from '../../models/Hotel'
+import { RestaurantTourismInfo } from '../../models/Restaurant'
 import ProblemPlaceholder, { Problems } from '../ProblemPlaceholder'
 
-function SectionScenicSpot({ scenicSpots }: { scenicSpots: ScenicSpotTourismInfo[] }) {
+function SectionScenicSpot({ items }: { items: ScenicSpotTourismInfo[] | HotelTourismInfo[] | RestaurantTourismInfo[] }) {
   return (
     <SectionScenicSpotWrapper>
-      {scenicSpots.map(scenicSpot => (
+      {items.map(item => (
         <Card
-          key={scenicSpot.ID}
-          name={scenicSpot.Name}
-          location={scenicSpot.City}
-          imageUrl={scenicSpot.Picture.PictureUrl1}
-          address={scenicSpot.Address}
-          description={scenicSpot.Description || scenicSpot.DescriptionDetail}
+          key={item.ID}
+          name={item.Name}
+          location={item.City}
+          imageUrl={item.Picture.PictureUrl1}
+          address={item.Address}
+          description={item.Description || item.DescriptionDetail}
         />
       ))}
-      {scenicSpots.length === 0 && <ProblemPlaceholder problem={Problems.NoResult}/>}
+      {items.length === 0 && <ProblemPlaceholder problem={Problems.NoResult}/>}
     </SectionScenicSpotWrapper>
   )
 }

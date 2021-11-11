@@ -1,26 +1,26 @@
-import { scenicSpotTypes, ScenicSpotsActions, ScenicSpotsState } from '../actions/scenicSpots/type'
+import { restaurantTypes, RestaurantsActions, RestaurantsState } from '../actions/restaurants/type'
 
-const initialState: ScenicSpotsState = {
+const initialState: RestaurantsState = {
   pending: false,
-  scenicSpots: [],
+  restaurants: [],
   error: null
 }
 
-const scenicSpotsReducer = (state = initialState, action: ScenicSpotsActions) => {
+const restaurantsReducer = (state = initialState, action: RestaurantsActions) => {
   switch (action.type) {
-    case scenicSpotTypes.FETCH_SCENICSPOT_REQUEST:
+    case restaurantTypes.FETCH_RESTAURANT_REQUEST:
       return {
         ...state,
         pending: true
       }
-    case scenicSpotTypes.FETCH_SCENICSPOT_SUCCESS:
+    case restaurantTypes.FETCH_RESTAURANT_SUCCESS:
       return {
         ...state,
         pending: false,
-        scenicSpots: action.payload.scenicSpots,
+        restaurants: action.payload.restaurants,
         error: null
       }
-    case scenicSpotTypes.FETCH_SCENICSPOT_FAILURE:
+    case restaurantTypes.FETCH_RESTAURANT_FAILURE:
       return {
         ...state,
         pending: false,
@@ -33,4 +33,4 @@ const scenicSpotsReducer = (state = initialState, action: ScenicSpotsActions) =>
   }
 }
 
-export default scenicSpotsReducer
+export default restaurantsReducer

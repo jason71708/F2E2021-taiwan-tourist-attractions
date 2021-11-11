@@ -8,8 +8,7 @@ import Banner from '../Banner'
 import SectionTitle from '../SectionTitle'
 import { PageWrapper, ContentWrapper } from './style'
 import { Shapes } from '../../constants'
-// import SectionActivity from '../SectionActivity'
-// import SectionScenicSpot from '../SectionScenicSpot'
+import SectionScenicSpot from '../SectionScenicSpot'
 import LoadingPlaceholder from '../LoadingPlaceholder'
 
 function RestaurantsPage() {
@@ -22,8 +21,8 @@ function RestaurantsPage() {
   )
 
   useEffect(() => {
-    dispatch(fetchHotelsRequest())
-    dispatch(fetchRestaurantsRequest())
+    dispatch(fetchHotelsRequest({ perpageCounts: 20 }))
+    dispatch(fetchRestaurantsRequest({ perpageCounts: 20 }))
   }, [])
 
   return(
@@ -36,15 +35,15 @@ function RestaurantsPage() {
         </ContentWrapper>
         <ContentWrapper>
           <SectionTitle title={'熱門美食'} type={Shapes.Square} />
-          {/* {restaurantsState.pending && <LoadingPlaceholder />}
+          {restaurantsState.pending && <LoadingPlaceholder />}
           {restaurantsState.error && <div>Sorry, something wrong.</div>}
-          {!restaurantsState.pending && !restaurantsState.error && <SectionScenicSpot restaurants={restaurantsState.restaurants}/>} */}
+          {!restaurantsState.pending && !restaurantsState.error && <SectionScenicSpot items={restaurantsState.restaurants}/>}
         </ContentWrapper>
         <ContentWrapper>
           <SectionTitle title={'推薦住宿'} type={Shapes.Square} />
-          {/* {hotelsState.pending && <LoadingPlaceholder />}
+          {hotelsState.pending && <LoadingPlaceholder />}
           {hotelsState.error && <div>Sorry, something wrong.</div>}
-          {!hotelsState.pending && !hotelsState.error && <SectionActivity hotels={hotelsState.hotels} />} */}
+          {!hotelsState.pending && !hotelsState.error && <SectionScenicSpot items={hotelsState.hotels} />}
         </ContentWrapper>
       </PageWrapper>
     </>

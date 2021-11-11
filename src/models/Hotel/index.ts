@@ -4,6 +4,7 @@ export type HotelTourismInfo = {
   readonly ID: string
   readonly Name: string,
   Description?: string,
+  DescriptionDetail?: string,
   Grade?: string,
   Address?: string,
   ZipCode?: string,
