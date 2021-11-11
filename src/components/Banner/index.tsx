@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ShadowEffectCard from '../ShadowEffectCard'
 import CustomSelect from '../CustomSelect'
 import {
@@ -18,11 +18,15 @@ import Icons from '../Icons'
 import {
   scenicSpotPageSeachOptions,
   accommodationPageSeachOptions,
-  cityOptions
+  cityOptions,
+  ScenicSpotPageSeachOptions,
+  AccommodationPageSeachOptions,
+  CityOptions,
+  QueryOption,
+  ScrollTargetNames
 } from '../../constants'
 import { Paths } from '../../constants'
 import { useLocation, Location } from 'react-router-dom'
-import { ScenicSpotPageSeachOptions, AccommodationPageSeachOptions, CityOptions, QueryOption, ScrollTargetNames } from '../../constants'
 import useNavigateParams from '../../hooks/useNavigateParams'
 import { scroller } from 'react-scroll'
 import useSearchQueryString, { SearchType } from '../../hooks/useSearchQueryString'
@@ -60,6 +64,25 @@ function Banner({ searchType }: { searchType: SearchType }) {
       offset: -20
     })
   }
+  
+  useEffect(() => {
+    if (location.search === '') {
+      setKeywords('')
+      setCategory(
+        searchType === SearchType.ScenicSpotPage ? scenicSpotPageSeachOptions[0].value
+        : searchType === SearchType.AccommodationPage ? accommodationPageSeachOptions[0].value
+        : null
+      )
+      setCity(cityOptions[0].value)
+      return
+    }
+    scroller.scrollTo(ScrollTargetNames.AfterSearch, {
+      duration: 1000,
+      delay: 100,
+      smooth: true,
+      offset: -20
+    })
+  }, [location, searchType])
 
   return (
     <BannerWrapper>
@@ -71,16 +94,15 @@ function Banner({ searchType }: { searchType: SearchType }) {
           </BannerTitle>
           <BannerDescription>台北、台中、台南、屏東、宜蘭……遊遍台灣</BannerDescription>
           <InputRow>
-            {searchType === SearchType.ScenicSpotPage && (
-              <CustomSelect
-                key="ScenicSpot"
-                isSearchable={false}
-                options={scenicSpotPageSeachOptions}
-                defaultValue={scenicSpotPageSeachOptions.find(option => option.value === category) || scenicSpotPageSeachOptions[0]}
-                onChange={(option: QueryOption<ScenicSpotPageSeachOptions> | null) => {
-                  setCategory(option ? option.value : option)
-                }}
-              />)
+            {searchType === SearchType.ScenicSpotPage && <CustomSelect
+              key="ScenicSpot"
+              isSearchable={false}
+              options={scenicSpotPageSeachOptions}
+              defaultValue={scenicSpotPageSeachOptions.find(option => option.value === category) || scenicSpotPageSeachOptions[0]}
+              onChange={(option: QueryOption<ScenicSpotPageSeachOptions> | null) => {
+                setCategory(option ? option.value : option)
+              }}
+            />
             }
             {searchType === SearchType.AccommodationPage && <CustomSelect
               key="Accommodation"
@@ -107,7 +129,7 @@ function Banner({ searchType }: { searchType: SearchType }) {
               placeholder="搜尋關鍵字"
               value={keywords}
               onChange={e => setKeywords(e.target.value)}
-              onKeyUp={e => {
+              onKeyPress={e => {
                 if (e.key === 'Enter') {
                   submitSearch()
                 }

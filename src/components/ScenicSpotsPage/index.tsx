@@ -37,10 +37,10 @@ function ScenicSpotsPage() {
     if (category === ScenicSpotPageSeachOptions.Activity) {
       dispatch(fetchActivitiesRequest({ ...payload, perpageCounts: activityCountPerPage }))
     } else if (category === ScenicSpotPageSeachOptions.ScenicSpot) {
-      dispatch(fetchScenicSpotsRequest({ ...payload, perpageCounts: generalCountPerPage}))
+      dispatch(fetchScenicSpotsRequest({ ...payload, perpageCounts: generalCountPerPage }))
     } else {
-      dispatch(fetchActivitiesRequest({ ...payload, perpageCounts: 4}))
-      dispatch(fetchScenicSpotsRequest({ ...payload, perpageCounts: generalCountPerPage}))
+      dispatch(fetchActivitiesRequest({ ...payload, perpageCounts: activityCountPerPage }))
+      dispatch(fetchScenicSpotsRequest({ ...payload, perpageCounts: generalCountPerPage }))
     }
   }, [category, city, dispatch, keywords])
 
@@ -48,10 +48,10 @@ function ScenicSpotsPage() {
     <>
       <Banner searchType={SearchType.ScenicSpotPage}/>
       <PageWrapper>
-        <ContentWrapper>
+        {(!category && !city && !keywords) && <ContentWrapper>
           <SectionTitle title={'熱門城市'} type={Shapes.Triangle} />
           <CityCarousel />
-        </ContentWrapper>
+        </ContentWrapper>}
         <ScrollTarget name={ScrollTargetNames.AfterSearch}>
           {(category === ScenicSpotPageSeachOptions.Activity || !category) && <ContentWrapper>
             <SectionTitle title={'熱門活動'} type={Shapes.Triangle} />

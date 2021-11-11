@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import useSearchParams from '../useSearchParams'
 import { scenicSpotPageSeachOptions, accommodationPageSeachOptions, cityOptions } from '../../constants'
 
@@ -28,7 +28,7 @@ function useSearchQueryString(searchType: SearchType) {
     if (searchType === SearchType.ScenicSpotPage) {
       category = isCorrectOption<string | null>(category, scenicSpotPageSeachValues, scenicSpotPageSeachValues[0])
     } else if (searchType === SearchType.AccommodationPage) {
-      category = isCorrectOption<string | null>(category, accommodationPageSeachValues, scenicSpotPageSeachValues[0])
+      category = isCorrectOption<string | null>(category, accommodationPageSeachValues, accommodationPageSeachValues[0])
     }
     return { city, keywords, category }
   }, [searchParams, searchType])

@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { useLocation } from 'react-router'
 
 function useSearchParams() {
-  const { search } = useLocation()
+  const location = useLocation()
   const searchParams = useMemo(() => (
-    new URLSearchParams(search)
-  ), [search])
+    new URLSearchParams(location.search)
+  ), [location])
   return searchParams
 }
 
