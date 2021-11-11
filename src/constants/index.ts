@@ -111,3 +111,7 @@ export const generateStaticImagePath = (name: string, type: string) => `/images/
 
 export const generalCountPerPage = 20
 export const activityCountPerPage = 12
+
+export enum ScrollTargetNames {
+  AfterSearch = 'AfterSearch'
+}

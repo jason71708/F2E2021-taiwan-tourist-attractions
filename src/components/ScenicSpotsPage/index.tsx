@@ -7,14 +7,14 @@ import CityCarousel from '../CityCarousel'
 import Banner from '../Banner'
 import SectionTitle from '../SectionTitle'
 import { PageWrapper, ContentWrapper } from './style'
-import { Shapes, generalCountPerPage, activityCountPerPage, ScenicSpotPageSeachOptions } from '../../constants'
+import { Shapes, generalCountPerPage, activityCountPerPage, ScenicSpotPageSeachOptions, ScrollTargetNames } from '../../constants'
 import SectionActivity from '../SectionActivity'
 import SectionCards from '../SectionCards'
 import LoadingPlaceholder from '../LoadingPlaceholder'
 import ProblemPlaceholder, { Problems } from '../ProblemPlaceholder'
 import useSearchQueryString, { SearchType } from '../../hooks/useSearchQueryString'
 import { TDXAPIParameters } from '../../api/types'
-import { Element } from 'react-scroll'
+import { Element as ScrollTarget } from 'react-scroll'
 
 function ScenicSpotsPage() {
   const dispatch = useDispatch()
@@ -46,26 +46,26 @@ function ScenicSpotsPage() {
 
   return(
     <>
-      <Banner />
+      <Banner searchType={SearchType.ScenicSpotPage}/>
       <PageWrapper>
         <ContentWrapper>
           <SectionTitle title={'熱門城市'} type={Shapes.Triangle} />
           <CityCarousel />
         </ContentWrapper>
-        <Element name="scrollTarget">
-          <ContentWrapper>
+        <ScrollTarget name={ScrollTargetNames.AfterSearch}>
+          {(category === ScenicSpotPageSeachOptions.Activity || !category) && <ContentWrapper>
             <SectionTitle title={'熱門活動'} type={Shapes.Triangle} />
             {activitiesState.pending && <LoadingPlaceholder />}
             {activitiesState.error && <ProblemPlaceholder problem={Problems.Error} />}
             {!activitiesState.pending && !activitiesState.error && <SectionActivity activities={activitiesState.activities} />}
-          </ContentWrapper>
-          <ContentWrapper>
+          </ContentWrapper>}
+          {(category === ScenicSpotPageSeachOptions.ScenicSpot || !category) &&<ContentWrapper>
             <SectionTitle title={'熱門景點'} type={Shapes.Triangle} />
             {scenicSpotsState.pending && <LoadingPlaceholder />}
             {scenicSpotsState.error && <ProblemPlaceholder problem={Problems.Error} />}
             {!scenicSpotsState.pending && !scenicSpotsState.error && <SectionCards items={scenicSpotsState.scenicSpots}/>}
-          </ContentWrapper>
-        </Element>
+          </ContentWrapper>}
+        </ScrollTarget>
       </PageWrapper>
     </>
   )

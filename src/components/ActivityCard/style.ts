@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import breakpoint from '../../styles/breakpoint'
 import { LimitLineCss } from '../../styles/helper'
+import imagePlaceholder from '../../assets/images/image-placeholder.svg'
 
 export const ActivityCardWrapper = styled.div`
   width: 100%;
@@ -36,7 +37,7 @@ export const ActivityImage = styled.div<ActivityImageProps>`
   flex-shrink: 0;
   width: 100px;
   height: 100%;
-  background-image: url(${props => props.backgoundUrl});
+  background-image: url(${props => props.backgoundUrl}), url(${imagePlaceholder});
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;

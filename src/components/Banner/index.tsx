@@ -22,9 +22,10 @@ import {
 } from '../../constants'
 import { Paths } from '../../constants'
 import { useLocation, Location } from 'react-router-dom'
-import { ScenicSpotPageSeachOptions, AccommodationPageSeachOptions, CityOptions, QueryOption } from '../../constants'
+import { ScenicSpotPageSeachOptions, AccommodationPageSeachOptions, CityOptions, QueryOption, ScrollTargetNames } from '../../constants'
 import useNavigateParams from '../../hooks/useNavigateParams'
 import { scroller } from 'react-scroll'
+import useSearchQueryString, { SearchType } from '../../hooks/useSearchQueryString'
 
 const currentPathImage = (location: Location) => {
   switch (location.pathname) {
@@ -37,13 +38,14 @@ const currentPathImage = (location: Location) => {
   }
 }
 
-function Banner() {
+function Banner({ searchType }: { searchType: SearchType }) {
   const navigateParams = useNavigateParams()
   const location = useLocation()
+  const queryStrings = useSearchQueryString(SearchType[searchType])
   const image = currentPathImage(location)
-  const [keywords, setKeywords] = useState<string>('')
-  const [category, setCategory] = useState<string | null>('')
-  const [city, setCity] = useState<string | null>('')
+  const [keywords, setKeywords] = useState<string>(queryStrings.keywords || '')
+  const [category, setCategory] = useState<string | null>(queryStrings.category)
+  const [city, setCity] = useState<string | null>(queryStrings.city)
 
   const submitSearch = () => {
     const searchParams  = new URLSearchParams()
@@ -51,7 +53,7 @@ function Banner() {
     if (category) searchParams.set('category', category)
     if (city) searchParams.set('city', city)
     navigateParams(location.pathname, searchParams.toString())
-    scroller.scrollTo('scrollTarget', {
+    scroller.scrollTo(ScrollTargetNames.AfterSearch, {
       duration: 1000,
       delay: 100,
       smooth: true,
@@ -69,31 +71,30 @@ function Banner() {
           </BannerTitle>
           <BannerDescription>台北、台中、台南、屏東、宜蘭……遊遍台灣</BannerDescription>
           <InputRow>
-            {location.pathname === Paths.ScenicSpots ? (
+            {searchType === SearchType.ScenicSpotPage && (
               <CustomSelect
                 key="ScenicSpot"
                 isSearchable={false}
                 options={scenicSpotPageSeachOptions}
-                defaultValue={scenicSpotPageSeachOptions[0]}
+                defaultValue={scenicSpotPageSeachOptions.find(option => option.value === category) || scenicSpotPageSeachOptions[0]}
                 onChange={(option: QueryOption<ScenicSpotPageSeachOptions> | null) => {
                   setCategory(option ? option.value : option)
                 }}
-              />
-            ) : (
-              <CustomSelect
-                key="Accommodation"
-                isSearchable={false}
-                options={accommodationPageSeachOptions}
-                defaultValue={accommodationPageSeachOptions[0]}
-                onChange={(option: QueryOption<AccommodationPageSeachOptions> | null) => {
-                  setCategory(option ? option.value : option)
-                }}
-              />
-            )}
+              />)
+            }
+            {searchType === SearchType.AccommodationPage && <CustomSelect
+              key="Accommodation"
+              isSearchable={false}
+              options={accommodationPageSeachOptions}
+              defaultValue={accommodationPageSeachOptions.find(option => option.value === category) || accommodationPageSeachOptions[0]}
+              onChange={(option: QueryOption<AccommodationPageSeachOptions> | null) => {
+                setCategory(option ? option.value : option)
+              }}
+            />}
             <CustomSelect
               isSearchable={false}
               options={cityOptions}
-              defaultValue={cityOptions[0]}
+              defaultValue={cityOptions.find(option => option.value === city) || cityOptions[0]}
               onChange={(option: QueryOption<CityOptions> | null) => {
                 setCity(option ? option.value : option)
               }}

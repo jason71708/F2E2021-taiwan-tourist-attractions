@@ -7,10 +7,12 @@ import CityCarousel from '../CityCarousel'
 import Banner from '../Banner'
 import SectionTitle from '../SectionTitle'
 import { PageWrapper, ContentWrapper } from './style'
-import { Shapes } from '../../constants'
+import { Shapes, generalCountPerPage, activityCountPerPage, ScenicSpotPageSeachOptions, ScrollTargetNames } from '../../constants'
 import SectionCards from '../SectionCards'
 import LoadingPlaceholder from '../LoadingPlaceholder'
 import ProblemPlaceholder, { Problems } from '../ProblemPlaceholder'
+import useSearchQueryString, { SearchType } from '../../hooks/useSearchQueryString'
+import { Element as ScrollTarget } from 'react-scroll'
 
 function RestaurantsPage() {
   const dispatch = useDispatch()
@@ -28,24 +30,26 @@ function RestaurantsPage() {
 
   return(
     <>
-      <Banner />
+      <Banner searchType={SearchType.AccommodationPage}/>
       <PageWrapper>
         <ContentWrapper>
           <SectionTitle title={'熱門城市'} type={Shapes.Square} />
           <CityCarousel />
         </ContentWrapper>
-        <ContentWrapper>
-          <SectionTitle title={'熱門美食'} type={Shapes.Square} />
-          {restaurantsState.pending && <LoadingPlaceholder />}
-          {restaurantsState.error && <ProblemPlaceholder problem={Problems.Error} />}
-          {!restaurantsState.pending && !restaurantsState.error && <SectionCards items={restaurantsState.restaurants}/>}
-        </ContentWrapper>
-        <ContentWrapper>
-          <SectionTitle title={'推薦住宿'} type={Shapes.Square} />
-          {hotelsState.pending && <LoadingPlaceholder />}
-          {hotelsState.error && <ProblemPlaceholder problem={Problems.Error} />}
-          {!hotelsState.pending && !hotelsState.error && <SectionCards items={hotelsState.hotels} />}
-        </ContentWrapper>
+        <ScrollTarget name={ScrollTargetNames.AfterSearch}>
+          <ContentWrapper>
+            <SectionTitle title={'熱門美食'} type={Shapes.Square} />
+            {restaurantsState.pending && <LoadingPlaceholder />}
+            {restaurantsState.error && <ProblemPlaceholder problem={Problems.Error} />}
+            {!restaurantsState.pending && !restaurantsState.error && <SectionCards items={restaurantsState.restaurants}/>}
+          </ContentWrapper>
+          <ContentWrapper>
+            <SectionTitle title={'推薦住宿'} type={Shapes.Square} />
+            {hotelsState.pending && <LoadingPlaceholder />}
+            {hotelsState.error && <ProblemPlaceholder problem={Problems.Error} />}
+            {!hotelsState.pending && !hotelsState.error && <SectionCards items={hotelsState.hotels} />}
+          </ContentWrapper>
+        </ScrollTarget>
       </PageWrapper>
     </>
   )
