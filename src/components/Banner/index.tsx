@@ -62,12 +62,6 @@ function Banner({ searchType }: { searchType: SearchType }) {
 
   const submitSearch = () => {
     navigateParams(location.pathname, getSearchParmsString({ city, category, keywords }))
-    scroller.scrollTo(ScrollTargetNames.AfterSearch, {
-      duration: 1000,
-      delay: 100,
-      smooth: true,
-      offset: -20
-    })
   }
 
   useEffect(() => {

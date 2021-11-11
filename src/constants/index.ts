@@ -78,7 +78,7 @@ export const cityOptions: QueryOption<CityOptions>[] = [
   { value: 'LienchiangCounty', label: '連江縣' }
 ]
 
-export const famousCities = [
+const famousCityNames = [
   '台北市',
   '新北市',
   '桃園市',
@@ -94,6 +94,14 @@ export const famousCities = [
   '台東縣',
   '金門縣'
 ]
+
+export const famousCities = famousCityNames.reduce((famousCities, name) => {
+  const targetCity = cityOptions.find(city => city.label === name)
+  if (targetCity) {
+    famousCities.push(targetCity)
+  }
+  return famousCities
+}, [] as QueryOption<CityOptions>[])
 
 export enum Paths {
   ScenicSpots = '/scenic-spots',

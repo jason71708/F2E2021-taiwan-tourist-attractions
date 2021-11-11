@@ -15,12 +15,13 @@ import Icons from '../Icons'
 export type City = {
   name: string
   url: string
+  value: string | null
 }
 
-export const CityCard = ({ citys }: { citys: City[] }) => {
+export const CityCard = ({ citys, onClick }: { citys: City[], onClick: (value: string | null) => void }) => {
   const isDouble = citys.length > 1
   const content = citys.map(city => {
-    return isDouble ? (<DoubleContent key={city.name}>
+    return isDouble ? (<DoubleContent onClick={() => onClick(city.value)} key={city.name}>
       <CityImage backgroundUrl={city.url}>
         <CityImageMask>
           <CityContent>
@@ -32,7 +33,7 @@ export const CityCard = ({ citys }: { citys: City[] }) => {
         </CityImageMask>
       </CityImage>
     </DoubleContent>) :
-    (<SingleContent key={city.name}>
+    (<SingleContent onClick={() => onClick(city.value)} key={city.name}>
       <CityImage backgroundUrl={city.url}>
         <CityImageMask>
           <CityContent>

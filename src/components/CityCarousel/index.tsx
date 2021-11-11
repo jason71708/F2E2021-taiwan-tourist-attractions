@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState, useCallback } from 'react'
 import Swiper from 'swiper'
 import useBreakpoint from '../../hooks/useBreakpoint'
 import useCityGroups from './useCityGroups'
@@ -8,12 +8,29 @@ import { LeftButton, RightButton } from './style'
 import Icons from '../Icons'
 import 'swiper/swiper.min.css'
 import './overwrite.css'
+import useNavigateParams from '../../hooks/useNavigateParams'
+import { useLocation } from 'react-router-dom'
 
 function CityCarousel() {
+  const navigateParams = useNavigateParams()
+  const location = useLocation()
+  
   const isLgBp = useBreakpoint('lg')
   const [activeIndex, setActiveIndex] = useState<number>(0)
   const swiperRef = useRef<Swiper | null>(null)
   const cityGroups = useCityGroups()
+
+  const getSearchParmsString = useCallback((city: string) => {
+    const searchParams  = new URLSearchParams()
+    if (city) searchParams.set('city', city)
+    return searchParams.toString()
+  }, [])
+
+  const searchCity = (value: string | null) => {
+    if (value) {
+      navigateParams(location.pathname, getSearchParmsString(value))
+    }
+  }
 
   return (
     <>
@@ -32,7 +49,7 @@ function CityCarousel() {
           <SwiperSlide key={`cityGroup-${index}`}>
             <CityCardGroup>
               {cityGroup.map((city, index) => (
-                <CityCard key={`cities-${index}`} citys={city} />
+                <CityCard key={`cities-${index}`} citys={city} onClick={searchCity}/>
               ))}
             </CityCardGroup>
           </SwiperSlide>

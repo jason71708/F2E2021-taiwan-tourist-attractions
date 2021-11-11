@@ -1,9 +1,14 @@
+import { useMemo } from 'react'
 import { famousCities, generateStaticImagePath } from '../../constants'
 import useBreakpoint from '../../hooks/useBreakpoint'
 import { City } from '../CityCard'
 
 const availableCities: City[] = famousCities.map(city => 
-  ({ name: city, url: generateStaticImagePath(city, 'png') })
+  ({
+    name: city.label,
+    value: city.value,
+    url: generateStaticImagePath(city.label, 'png')
+  })
 )
 
 const sliceCities = (cities: City[], range: number) => {
@@ -39,9 +44,12 @@ function useCityGroups() {
   const isMdBp = useBreakpoint('md')
   const isLgBp = useBreakpoint('lg')
 
-  return isLgBp ? seperateCities(sliceCities(availableCities, 7)) :
-    isMdBp ? seperateCities(sliceCities(availableCities.slice(0, 12), 6)) : // availableCities.slice(0, 12): In order to make it looks perfect.
-    seperateCities(sliceCities(availableCities, 3))
+  return useMemo(() => {
+    return isLgBp ? seperateCities(sliceCities(availableCities, 7)) :
+      isMdBp ? seperateCities(sliceCities(availableCities.slice(0, 12), 6)) : // availableCities.slice(0, 12): In order to make it looks perfect.
+      seperateCities(sliceCities(availableCities, 3))
+  }, [isLgBp, isMdBp])
+
 }
 
 export default useCityGroups
