@@ -57,7 +57,7 @@ function ScenicSpotsPage() {
     <>
       <Banner searchType={SearchType.ScenicSpotPage}/>
       <PageWrapper>
-        {!(category && city && keywords) && <ContentWrapper>
+        {!(category || city || keywords) && <ContentWrapper>
           <SectionTitle title={'熱門城市' } type={Shapes.Triangle} />
           <CityCarousel />
         </ContentWrapper>}

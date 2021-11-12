@@ -1,6 +1,6 @@
-import React from 'react'
 import ShadowEffectCard from '../ShadowEffectCard'
 import LocationLink from '../LocationLink'
+
 import {
   CardWrapper,
   ContentWrapper,
@@ -10,17 +10,23 @@ import {
   CardDescription
 } from './style'
 
-type DisplayInfo = {
+type CardInfo = {
   name: string
   imageUrl: string
   location?: string
   address?: string,
-  description?: string
+  description?: string,
+  onClick?: () => void
 }
 
-function Card({ name, location, imageUrl, address, description }: DisplayInfo) {
+function Card({ name, location, imageUrl, address, description, onClick }: CardInfo) {
+
   return (
-    <CardWrapper>
+    <CardWrapper onClick={() => {
+      if (onClick) {
+        onClick()
+      }
+    }}>
       <ShadowEffectCard>
         <ContentWrapper>
           <CardImage backgoundUrl={imageUrl} />

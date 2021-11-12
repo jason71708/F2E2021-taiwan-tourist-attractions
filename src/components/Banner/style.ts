@@ -7,6 +7,7 @@ export const BannerWrapper = styled.section`
   height: 116px;
   background-color: #fff;
   position: relative;
+  z-index: 3;
 
   ${breakpoint('md')`
     height: 160px;

@@ -56,7 +56,7 @@ function RestaurantsPage() {
     <>
       <Banner searchType={SearchType.AccommodationPage}/>
       <PageWrapper>
-        {!(category && city && keywords) && <ContentWrapper>
+        {!(category || city || keywords) && <ContentWrapper>
           <SectionTitle title={'熱門城市'} type={Shapes.Square} />
           <CityCarousel />
         </ContentWrapper>}

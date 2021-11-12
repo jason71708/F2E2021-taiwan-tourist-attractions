@@ -11,6 +11,7 @@ import { sectionScrollOptions } from '../../constants'
 import { Element as ScrollTarget } from 'react-scroll'
 import Counter from '../Counter'
 import { generateRandomString } from '../../utils'
+import Lightbox from '../Lightbox'
 
 type SectionCardsProps = {
   items: ScenicSpotTourismInfo[] | HotelTourismInfo[] | RestaurantTourismInfo[] | ActivityTourismInfo[],
@@ -24,6 +25,8 @@ function SectionCards(
   const randomName = useRef(generateRandomString())
   const scroller = useScroller(randomName.current, sectionScrollOptions)
   const [currentPage, setCurrentPage] = useState(1)
+  const [show, setShow] = useState(false)
+  // const [currentItem, setCurrentItem] = useState<Partial<SectionCardsProps['items']> | null>(null) todo
 
   const currentPageItems = useMemo(() => {
     return items.slice((currentPage - 1) * countsPerpage, currentPage * countsPerpage)
@@ -44,6 +47,10 @@ function SectionCards(
             imageUrl={item.Picture.PictureUrl1}
             address={item.Address}
             description={item.Description || item.DescriptionDetail}
+            onClick={() => {
+              setShow(true)
+              // setCurrentItem(item)
+            }}
           />
         ))}
         {items.length === 0 && <ProblemPlaceholder problem={Problems.NoResult}/>}
@@ -58,6 +65,10 @@ function SectionCards(
           }}
         />
       )}
+      {show && <Lightbox onClose={() => {
+        setShow(false)
+        // setCurrentItem(null)
+      }}/>}
     </ScrollTarget>
   )
 }
