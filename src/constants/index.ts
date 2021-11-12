@@ -115,7 +115,9 @@ export enum Shapes {
   Circle = 'Circle'
 }
 
-export const generateStaticImagePath = (name: string, type: string) => `/images/${name}.${type}`
+export const generateStaticImagePath = (name: string, type: string) => {
+  return (process.env.NODE_ENV === 'production' ? process.env.REACT_APP_GITHUB_PAGE_PATH : '') + `/images/${name}.${type}`
+}
 
 export enum ScrollTargetNames {
   AfterSearch = 'AfterSearch',
