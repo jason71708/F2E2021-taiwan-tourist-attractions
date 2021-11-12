@@ -6,14 +6,14 @@
     "runtime-main.js": "/F2E2021-taiwan-tourist-attractions/static/js/runtime-main.a2c05842.js",
     "runtime-main.js.map": "/F2E2021-taiwan-tourist-attractions/static/js/runtime-main.a2c05842.js.map",
     "static/css/2.dde13ac0.chunk.css": "/F2E2021-taiwan-tourist-attractions/static/css/2.dde13ac0.chunk.css",
-    "static/js/2.03a1fa26.chunk.js": "/F2E2021-taiwan-tourist-attractions/static/js/2.03a1fa26.chunk.js",
-    "static/js/2.03a1fa26.chunk.js.map": "/F2E2021-taiwan-tourist-attractions/static/js/2.03a1fa26.chunk.js.map",
+    "static/js/2.562a7807.chunk.js": "/F2E2021-taiwan-tourist-attractions/static/js/2.562a7807.chunk.js",
+    "static/js/2.562a7807.chunk.js.map": "/F2E2021-taiwan-tourist-attractions/static/js/2.562a7807.chunk.js.map",
     "static/js/3.062d843d.chunk.js": "/F2E2021-taiwan-tourist-attractions/static/js/3.062d843d.chunk.js",
     "static/js/3.062d843d.chunk.js.map": "/F2E2021-taiwan-tourist-attractions/static/js/3.062d843d.chunk.js.map",
     "index.html": "/F2E2021-taiwan-tourist-attractions/index.html",
     "static/css/2.dde13ac0.chunk.css.map": "/F2E2021-taiwan-tourist-attractions/static/css/2.dde13ac0.chunk.css.map",
     "static/css/main.84b3322c.chunk.css.map": "/F2E2021-taiwan-tourist-attractions/static/css/main.84b3322c.chunk.css.map",
-    "static/js/2.03a1fa26.chunk.js.LICENSE.txt": "/F2E2021-taiwan-tourist-attractions/static/js/2.03a1fa26.chunk.js.LICENSE.txt",
+    "static/js/2.562a7807.chunk.js.LICENSE.txt": "/F2E2021-taiwan-tourist-attractions/static/js/2.562a7807.chunk.js.LICENSE.txt",
     "static/media/circle-icon.b4d90031.svg": "/F2E2021-taiwan-tourist-attractions/static/media/circle-icon.b4d90031.svg",
     "static/media/circle.69bcc3bc.svg": "/F2E2021-taiwan-tourist-attractions/static/media/circle.69bcc3bc.svg",
     "static/media/clock.bc0768fd.svg": "/F2E2021-taiwan-tourist-attractions/static/media/clock.bc0768fd.svg",
@@ -39,7 +39,7 @@
   "entrypoints": [
     "static/js/runtime-main.a2c05842.js",
     "static/css/2.dde13ac0.chunk.css",
-    "static/js/2.03a1fa26.chunk.js",
+    "static/js/2.562a7807.chunk.js",
     "static/css/main.84b3322c.chunk.css",
     "static/js/main.d1964e47.chunk.js"
   ]
