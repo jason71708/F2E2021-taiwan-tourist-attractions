@@ -1,17 +1,19 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Card from '../Card'
-import { SectionCardsWrapper, CountControllerWrapper, CountButtonWrapper, Count } from './style'
+import { SectionCardsWrapper } from './style'
 import { ScenicSpotTourismInfo } from '../../models/ScenicSpot'
 import { HotelTourismInfo } from '../../models/Hotel'
 import { RestaurantTourismInfo } from '../../models/Restaurant'
+import { ActivityTourismInfo } from '../../models/Activity'
 import ProblemPlaceholder, { Problems } from '../ProblemPlaceholder'
-import Icons from '../Icons'
 import useScroller from '../../hooks/useScroller'
 import { sectionScrollOptions } from '../../constants'
 import { Element as ScrollTarget } from 'react-scroll'
+import Counter from '../Counter'
+import { generateRandomString } from '../../utils'
 
 type SectionCardsProps = {
-  items: ScenicSpotTourismInfo[] | HotelTourismInfo[] | RestaurantTourismInfo[],
+  items: ScenicSpotTourismInfo[] | HotelTourismInfo[] | RestaurantTourismInfo[] | ActivityTourismInfo[],
   countsPerpage?: number,
   showCounter?: boolean
 }
@@ -19,7 +21,7 @@ type SectionCardsProps = {
 function SectionCards(
   { items, countsPerpage = 20, showCounter = true }: SectionCardsProps
 ) {
-  const randomName = useRef(Math.random().toString(36).substring(7))
+  const randomName = useRef(generateRandomString())
   const scroller = useScroller(randomName.current, sectionScrollOptions)
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -46,22 +48,16 @@ function SectionCards(
         ))}
         {items.length === 0 && <ProblemPlaceholder problem={Problems.NoResult}/>}
       </SectionCardsWrapper>
-      <code>{items.length}</code>
-      {showCounter && <CountControllerWrapper>
-        <CountButtonWrapper>
-          {currentPage > 1 && <Icons.VectorLeft onClick={() => {
-            setCurrentPage(currentPage - 1)
+      {showCounter && (
+        <Counter
+          currentPage={currentPage}
+          maxPage={Math.ceil(items.length / countsPerpage)}
+          onChange={(value: number) => {
+            setCurrentPage(value)
             scroller.scrollTo()
-          }} />}
-        </CountButtonWrapper>
-        <Count>{currentPage}</Count>
-        <CountButtonWrapper>
-          {currentPage < (Math.ceil(items.length / countsPerpage)) && <Icons.VectorRight onClick={() => {
-            setCurrentPage(currentPage + 1)
-            scroller.scrollTo()
-          }}/>}
-        </CountButtonWrapper>
-      </CountControllerWrapper>}
+          }}
+        />
+      )}
     </ScrollTarget>
   )
 }

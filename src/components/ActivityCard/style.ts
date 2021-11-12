@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import breakpoint from '../../styles/breakpoint'
 import { LimitLineCss } from '../../styles/helper'
 import imagePlaceholder from '../../assets/images/image-placeholder.svg'
+import { formatValidBackgroundUrl } from '../../utils'
 
 export const ActivityCardWrapper = styled.div`
   width: 100%;
@@ -96,7 +97,7 @@ type ActivityImageProps = {
 
 export const ActivityImage = styled.div.attrs<ActivityImageProps>(props => ({
   style: {
-    backgroundImage: `url(${props.backgoundUrl}), url(${imagePlaceholder})`
+    backgroundImage: `url(${formatValidBackgroundUrl(props.backgoundUrl)}), url(${imagePlaceholder})`
   }
 }))<ActivityImageProps>`
   flex-shrink: 0;

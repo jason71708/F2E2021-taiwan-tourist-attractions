@@ -7,7 +7,7 @@ import CityCarousel from '../CityCarousel'
 import Banner from '../Banner'
 import SectionTitle from '../SectionTitle'
 import { PageWrapper, ContentWrapper } from './style'
-import { Shapes, ScenicSpotPageSeachOptions, ScrollTargetNames } from '../../constants'
+import { Shapes, ScenicSpotPageSeachOptions, ScrollTargetNames, cityOptions } from '../../constants'
 import SectionActivity from '../SectionActivity'
 import SectionCards from '../SectionCards'
 import LoadingPlaceholder from '../LoadingPlaceholder'
@@ -44,23 +44,32 @@ function ScenicSpotsPage() {
     }
   }, [category, city, dispatch, keywords])
 
+  const generateTitle = (city: string | null, keywords: string, type: string) => {
+    if (city || keywords) {
+      const targetCity = cityOptions.find(option => option.value === city)
+      return `${type}搜尋 ${targetCity?.label || ''} ${keywords}`
+    } else {
+      return `熱門${type}`
+    }
+  }
+
   return(
     <>
       <Banner searchType={SearchType.ScenicSpotPage}/>
       <PageWrapper>
-        {(!category && !city && !keywords) && <ContentWrapper>
-          <SectionTitle title={'熱門城市'} type={Shapes.Triangle} />
+        {!(category && city && keywords) && <ContentWrapper>
+          <SectionTitle title={'熱門城市' } type={Shapes.Triangle} />
           <CityCarousel />
         </ContentWrapper>}
         <ScrollTarget name={ScrollTargetNames.AfterSearch}>
           {(category === ScenicSpotPageSeachOptions.Activity || !category) && <ContentWrapper>
-            <SectionTitle title={'熱門活動'} type={Shapes.Triangle} />
+            <SectionTitle title={generateTitle(city, keywords, '活動')} type={Shapes.Triangle} />
             {activitiesState.pending && <LoadingPlaceholder />}
             {activitiesState.error && <ProblemPlaceholder problem={Problems.Error} />}
-            {!activitiesState.pending && !activitiesState.error && <SectionActivity activities={activitiesState.activities} />}
+            {!activitiesState.pending && !activitiesState.error && <SectionActivity countsPerpage={8} items={activitiesState.activities} />}
           </ContentWrapper>}
           {(category === ScenicSpotPageSeachOptions.ScenicSpot || !category) &&<ContentWrapper>
-            <SectionTitle title={'熱門景點'} type={Shapes.Triangle} />
+            <SectionTitle title={generateTitle(city, keywords, '景點')} type={Shapes.Triangle} />
             {scenicSpotsState.pending && <LoadingPlaceholder />}
             {scenicSpotsState.error && <ProblemPlaceholder problem={Problems.Error} />}
             {!scenicSpotsState.pending && !scenicSpotsState.error && <SectionCards items={scenicSpotsState.scenicSpots}/>}

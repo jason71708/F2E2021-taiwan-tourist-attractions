@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import breakpoint, { breakpoints } from '../../styles/breakpoint'
 import { LimitLineCss } from '../../styles/helper'
 import imagePlaceholder from '../../assets/images/image-placeholder.svg'
+import { formatValidBackgroundUrl } from '../../utils'
 
 export const CardWrapper = styled.div`
   width: calc((100% - 8px) / 2);
@@ -73,11 +74,14 @@ type CardImageProps = {
   backgoundUrl: string
 }
 
-export const CardImage = styled.div<CardImageProps>`
+export const CardImage = styled.div.attrs<CardImageProps>(props => ({
+  style: {
+    backgroundImage: `url(${formatValidBackgroundUrl(props.backgoundUrl)}), url(${imagePlaceholder})`
+  }
+}))<CardImageProps>`
   flex-shrink: 0;
   width: 100%;
   height: 120px;
-  background-image: url(${props => props.backgoundUrl}), url(${imagePlaceholder});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

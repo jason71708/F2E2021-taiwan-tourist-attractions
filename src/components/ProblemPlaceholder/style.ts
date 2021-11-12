@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import breakpoint from '../../styles/breakpoint'
 
 export const ProblemWrapper = styled.div`
   width: 100%;
@@ -13,12 +14,24 @@ export const ProblemTitle = styled.p`
   color: ${props => props.theme.colors.secondary};
   font-size: 20px;
   margin: 0 0 4px 8px;
+  text-align: center;
+
+  ${breakpoint('md')`
+    text-align: start;
+  `}
 `
 
 export const ProblemText = styled.p`
   color: ${props => props.theme.colors.gray};
   font-size: 18px;
   margin: 0 0 0 8px;
+  text-align: center;
+  padding: 0 40px;
+
+  ${breakpoint('md')`
+    text-align: start;
+    padding: 0;
+  `}
 `
 
 export const ActionWrapper = styled.div`

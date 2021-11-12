@@ -4,6 +4,7 @@ export type ActivityTourismInfo = {
   readonly ID: string
   readonly Name: string
   Description?: string
+  DescriptionDetail?: string
   Particpation?: string
   Location?: string
   Address?: string
