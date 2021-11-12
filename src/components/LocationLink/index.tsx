@@ -3,7 +3,7 @@ import { LocationLinkWrapper, MapIconWrapper } from './style'
 import Icons from '../Icons'
 
 type LocationLinkProps = {
-  location: string
+  location?: string
   address: string
 }
 
@@ -16,7 +16,7 @@ function LocationLink({ location, address }: LocationLinkProps) {
       <MapIconWrapper>
         <Icons.Map />
       </MapIconWrapper>
-      {location}
+      {location || address}
     </LocationLinkWrapper>
   )
 }
