@@ -48,7 +48,7 @@ function SectionCards(
         ))}
         {items.length === 0 && <ProblemPlaceholder problem={Problems.NoResult}/>}
       </SectionCardsWrapper>
-      {showCounter && (
+      {showCounter && items.length > countsPerpage && (
         <Counter
           currentPage={currentPage}
           maxPage={Math.ceil(items.length / countsPerpage)}

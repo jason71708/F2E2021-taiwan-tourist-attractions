@@ -45,7 +45,7 @@ function SectionActivity(
         ))}
         {items.length === 0 && <ProblemPlaceholder problem={Problems.NoResult}/>}
       </SectionActivityWrapper>
-      {showCounter && (
+      {showCounter && items.length > countsPerpage && (
         <Counter
           currentPage={currentPage}
           maxPage={Math.ceil(items.length / countsPerpage)}
