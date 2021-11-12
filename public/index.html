@@ -5,14 +5,25 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+    <title>%REACT_APP_TITLE%</title>
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="%REACT_APP_DESCRIPTION%"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!-- <title>Taiwan Tourist Attractions</title> -->
-    <title>%REACT_APP_TITLE%</title>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="%REACT_APP_DESCRIPTION%"/>
+    <meta property="og:description" content=""/>
+    <meta property="og:url" content="https://jason71708.github.io/F2E2021-taiwan-tourist-attractions"/>
+    <meta property="og:image" content="%PUBLIC_URL%/LOGO.png" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BEQVBF2NH8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BEQVBF2NH8');
+    </script>
   </head>
   <body>
     <div id="root"></div>
