@@ -7,7 +7,7 @@ import CityCarousel from '../CityCarousel'
 import Banner from '../Banner'
 import SectionTitle from '../SectionTitle'
 import { PageWrapper, ContentWrapper } from './style'
-import { Shapes, generalCountPerPage, AccommodationPageSeachOptions, ScrollTargetNames } from '../../constants'
+import { Shapes, AccommodationPageSeachOptions, ScrollTargetNames } from '../../constants'
 import SectionCards from '../SectionCards'
 import LoadingPlaceholder from '../LoadingPlaceholder'
 import ProblemPlaceholder, { Problems } from '../ProblemPlaceholder'
@@ -34,12 +34,12 @@ function RestaurantsPage() {
       payload.keywords = encodeURIComponent(keywords)
     }
     if (category === AccommodationPageSeachOptions.Accommodation) {
-      dispatch(fetchHotelsRequest({ ...payload, perpageCounts: generalCountPerPage }))
+      dispatch(fetchHotelsRequest(payload))
     } else if (category === AccommodationPageSeachOptions.Restaurant) {
-      dispatch(fetchRestaurantsRequest({ ...payload, perpageCounts: generalCountPerPage }))
+      dispatch(fetchRestaurantsRequest(payload))
     } else {
-      dispatch(fetchHotelsRequest({ ...payload, perpageCounts: generalCountPerPage }))
-      dispatch(fetchRestaurantsRequest({ ...payload, perpageCounts: generalCountPerPage }))
+      dispatch(fetchHotelsRequest({ ...payload, limit: 20 }))
+      dispatch(fetchRestaurantsRequest({ ...payload, limit: 20 }))
     }
   }, [category, city, dispatch, keywords])
 

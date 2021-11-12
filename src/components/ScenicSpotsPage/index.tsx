@@ -7,7 +7,7 @@ import CityCarousel from '../CityCarousel'
 import Banner from '../Banner'
 import SectionTitle from '../SectionTitle'
 import { PageWrapper, ContentWrapper } from './style'
-import { Shapes, generalCountPerPage, activityCountPerPage, ScenicSpotPageSeachOptions, ScrollTargetNames } from '../../constants'
+import { Shapes, ScenicSpotPageSeachOptions, ScrollTargetNames } from '../../constants'
 import SectionActivity from '../SectionActivity'
 import SectionCards from '../SectionCards'
 import LoadingPlaceholder from '../LoadingPlaceholder'
@@ -35,12 +35,12 @@ function ScenicSpotsPage() {
       payload.keywords = encodeURIComponent(keywords)
     }
     if (category === ScenicSpotPageSeachOptions.Activity) {
-      dispatch(fetchActivitiesRequest({ ...payload, perpageCounts: activityCountPerPage }))
+      dispatch(fetchActivitiesRequest(payload))
     } else if (category === ScenicSpotPageSeachOptions.ScenicSpot) {
-      dispatch(fetchScenicSpotsRequest({ ...payload, perpageCounts: generalCountPerPage }))
+      dispatch(fetchScenicSpotsRequest(payload))
     } else {
-      dispatch(fetchActivitiesRequest({ ...payload, perpageCounts: activityCountPerPage }))
-      dispatch(fetchScenicSpotsRequest({ ...payload, perpageCounts: generalCountPerPage }))
+      dispatch(fetchActivitiesRequest(payload))
+      dispatch(fetchScenicSpotsRequest(payload))
     }
   }, [category, city, dispatch, keywords])
 

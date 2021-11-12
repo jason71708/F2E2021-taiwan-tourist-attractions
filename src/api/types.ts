@@ -1,6 +1,5 @@
 export type TDXAPIParameters = {
-  page?: number,
-  perpageCounts?: number,
+  limit?: number,
   keywords?: string,
   city?: string
 }

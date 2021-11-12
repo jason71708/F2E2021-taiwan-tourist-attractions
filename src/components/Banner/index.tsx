@@ -28,8 +28,8 @@ import {
 import { Paths } from '../../constants'
 import { useLocation, Location } from 'react-router-dom'
 import useNavigateParams from '../../hooks/useNavigateParams'
-import { scroller } from 'react-scroll'
 import useSearchQueryString, { SearchType } from '../../hooks/useSearchQueryString'
+import useScroller from '../../hooks/useScroller'
 
 const currentPathImage = (location: Location) => {
   switch (location.pathname) {
@@ -45,6 +45,7 @@ const currentPathImage = (location: Location) => {
 function Banner({ searchType }: { searchType: SearchType }) {
   const navigateParams = useNavigateParams()
   const location = useLocation()
+  const scroller = useScroller(ScrollTargetNames.AfterSearch)
   const queryStrings = useSearchQueryString(SearchType[searchType])
   const image = currentPathImage(location)
   const [keywords, setKeywords] = useState<string>(queryStrings.keywords)
@@ -81,13 +82,8 @@ function Banner({ searchType }: { searchType: SearchType }) {
       setCity(cityOptions[0].value)
       return
     }
-    scroller.scrollTo(ScrollTargetNames.AfterSearch, {
-      duration: 1000,
-      delay: 100,
-      smooth: true,
-      offset: -20
-    })
-  }, [location, searchType])
+    scroller.scrollTo()
+  }, [location, searchType, scroller])
 
   return (
     <BannerWrapper>

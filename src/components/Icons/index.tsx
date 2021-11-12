@@ -13,6 +13,9 @@ import { ReactComponent as VectorRight } from '../../assets/images/vector-right.
 import { ReactComponent as Title } from '../../assets/images/title.svg'
 import { ReactComponent as ProblemIcon } from '../../assets/images/problem.svg'
 import { ReactComponent as ImagePlaceholder } from '../../assets/images/image-placeholder.svg'
+import { ReactComponent as Telephone } from '../../assets/images/telephone.svg'
+import { ReactComponent as Ticket } from '../../assets/images/ticket.svg'
+import { ReactComponent as Clock } from '../../assets/images/clock.svg'
 
 const Icons = {
   CircleIcon,
@@ -29,7 +32,10 @@ const Icons = {
   VectorRight,
   Title,
   ProblemIcon,
-  ImagePlaceholder
+  ImagePlaceholder,
+  Telephone,
+  Ticket,
+  Clock
 }
 
 export default Icons

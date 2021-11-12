@@ -29,25 +29,6 @@ export const ContentWrapper = styled.div`
   `}
 `
 
-type ActivityImageProps = {
-  backgoundUrl: string
-}
-
-export const ActivityImage = styled.div<ActivityImageProps>`
-  flex-shrink: 0;
-  width: 100px;
-  height: 100%;
-  background-image: url(${props => props.backgoundUrl}), url(${imagePlaceholder});
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  margin-right: 16px;
-
-  ${breakpoint('lg')`
-    width: 187px;
-  `}
-`
-
 export const ActivityInformation = styled.div`
   flex: 1 1 auto;
   display: flex;
@@ -106,5 +87,27 @@ export const DetailButton = styled.button`
 
   ${breakpoint('lg')`
     display: inline-block;
+  `}
+`
+
+type ActivityImageProps = {
+  backgoundUrl: string
+}
+
+export const ActivityImage = styled.div.attrs<ActivityImageProps>(props => ({
+  style: {
+    backgroundImage: `url(${props.backgoundUrl}), url(${imagePlaceholder})`
+  }
+}))<ActivityImageProps>`
+  flex-shrink: 0;
+  width: 100px;
+  height: 100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-right: 16px;
+
+  ${breakpoint('lg')`
+    width: 187px;
   `}
 `

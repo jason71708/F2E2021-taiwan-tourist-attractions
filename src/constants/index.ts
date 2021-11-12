@@ -117,9 +117,19 @@ export enum Shapes {
 
 export const generateStaticImagePath = (name: string, type: string) => `/images/${name}.${type}`
 
-export const generalCountPerPage = 20
-export const activityCountPerPage = 12
-
 export enum ScrollTargetNames {
-  AfterSearch = 'AfterSearch'
+  AfterSearch = 'AfterSearch',
+  ScenicSpot = 'ScenicSpot',
+  Activity = 'Activity',
+  Accommodation = 'Accommodation',
+  Restaurant = 'Restaurant'
 }
+
+export const sectionScrollOptions = {
+  duration: 1000,
+  delay: 100,
+  smooth: true,
+  offset: -40
+}
+
+export type PlainObject = { [name: string]: any }
