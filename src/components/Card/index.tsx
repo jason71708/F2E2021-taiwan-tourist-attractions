@@ -6,6 +6,7 @@ import {
   ContentWrapper,
   CardImage,
   CardInformation,
+  CardLinkTitle,
   CardTitle,
   CardDescription
 } from './style'
@@ -15,11 +16,12 @@ type CardInfo = {
   imageUrl: string
   location?: string
   address?: string,
-  description?: string,
+  description?: string
+  websiteUrl?: string
   onClick?: () => void
 }
 
-function Card({ name, location, imageUrl, address, description, onClick }: CardInfo) {
+function Card({ name, location, imageUrl, address, description, websiteUrl, onClick }: CardInfo) {
 
   return (
     <CardWrapper onClick={() => {
@@ -31,7 +33,13 @@ function Card({ name, location, imageUrl, address, description, onClick }: CardI
         <ContentWrapper>
           <CardImage backgoundUrl={imageUrl} />
           <CardInformation>
-            <CardTitle lineLimit={1}>{name}</CardTitle>
+            {websiteUrl ? (
+              <CardLinkTitle href={websiteUrl} lineLimit={1} target="_blank" onClick={e => {
+                e.stopPropagation()
+              }}>{name}</CardLinkTitle>
+            ): (
+              <CardTitle lineLimit={1}>{name}</CardTitle>
+            )}
             { (location && address) ?
               <LocationLink location={location} address={address} /> :
               description ?

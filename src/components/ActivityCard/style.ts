@@ -37,17 +37,29 @@ export const ActivityInformation = styled.div`
   justify-content: space-between;
 `
 
-export const ActivityTitle = styled.h5`
+export const ActivityLinkTitle = styled.a`
   margin: 0;
   font-size: 14px;
   font-weight: normal;
-  cursor: pointer;
   line-height: 20px;
+  text-decoration: none;
+  cursor: pointer;
   ${LimitLineCss}
 
   &:hover {
     text-decoration: underline;
   }
+
+  ${breakpoint('lg')`
+    font-size: 16px;
+  `}
+`
+
+export const ActivityTitle = styled.h5`
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  ${LimitLineCss}
 
   ${breakpoint('lg')`
     font-size: 16px;

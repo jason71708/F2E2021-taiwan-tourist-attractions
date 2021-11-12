@@ -46,6 +46,7 @@ function SectionCards(
             imageUrl={item.Picture.PictureUrl1}
             address={item.Address}
             description={item.Description || item.DescriptionDetail}
+            websiteUrl={item.WebsiteUrl}
             onClick={() => {
               setCurrentItem(item)
             }}

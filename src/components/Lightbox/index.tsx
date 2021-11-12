@@ -3,6 +3,7 @@ import { ScenicSpotTourismInfo } from '../../models/ScenicSpot'
 import { HotelTourismInfo } from '../../models/Hotel'
 import { RestaurantTourismInfo } from '../../models/Restaurant'
 import { ActivityTourismInfo } from '../../models/Activity'
+import imagePlaceholder from '../../assets/images/image-placeholder-lg.svg'
 import Icons from '../Icons'
 import {
   LightBoxWrapper,
@@ -14,7 +15,8 @@ import {
   ImageControlButton,
   LighboxTitle,
   LighboxDescription,
-  LighboxDetailInfo
+  LighboxDetailInfo,
+  LighboxDetailInfoWrapper
 } from './style'
 import InfoSnippet from '../InfoSnippet'
 import ScenicInfoSnippets from '../InfoSnippet/ScenicInfoSnippets'
@@ -60,7 +62,10 @@ function Lightbox({ onClose, item }: { onClose: () => void, item: Item }) {
           console.log('LightBoxContent')
         }}>
           <LightBoxImageWrapper>
-            <LightBoxImage src={pictures[imageIndex]} />
+            <LightBoxImage src={pictures[imageIndex]} onError={e => {
+              const target = e.target as HTMLImageElement
+              target.src = imagePlaceholder
+            }}/>
           </LightBoxImageWrapper>
           {pictures.length > 1 && <ImageController>
             <ImageControlButton>
@@ -76,18 +81,20 @@ function Lightbox({ onClose, item }: { onClose: () => void, item: Item }) {
           </ImageController>}
           <LighboxTitle>{item.Name}</LighboxTitle>
           <LighboxDescription>{item.DescriptionDetail || item.Description}</LighboxDescription>
-          <LighboxDetailInfo>
-            {(item.Phone) && <InfoSnippet text={item.Phone}>
-              <Icons.Telephone />
-            </InfoSnippet>}
-          </LighboxDetailInfo>
-          <LighboxDetailInfo>
-            {item.Address && <LocationLink location={item.Address} address={item.Address} />}
-          </LighboxDetailInfo>
-          {judgeTypeWithID(item, 'C1') && <ScenicInfoSnippets item={item} />}
-          {judgeTypeWithID(item, 'C2') && <ActivityInfoSnippets item={item} />}
-          {judgeTypeWithID(item, 'C4') && <HotelInfoSnippets item={item} />}
-          {judgeTypeWithID(item, 'C3') && <RestaurantInfoSnippets item={item} />}
+          <LighboxDetailInfoWrapper>
+            {item.Phone && <LighboxDetailInfo>
+              <InfoSnippet text={item.Phone}>
+                <Icons.Telephone />
+              </InfoSnippet>
+            </LighboxDetailInfo>}
+            {item.Address && <LighboxDetailInfo>
+              <LocationLink location={item.Address} address={item.Address} />
+            </LighboxDetailInfo>}
+            {judgeTypeWithID(item, 'C1') && <ScenicInfoSnippets item={item} />}
+            {judgeTypeWithID(item, 'C2') && <ActivityInfoSnippets item={item} />}
+            {judgeTypeWithID(item, 'C4') && <HotelInfoSnippets item={item} />}
+            {judgeTypeWithID(item, 'C3') && <RestaurantInfoSnippets item={item} />}
+          </LighboxDetailInfoWrapper>
         </LightBoxContent>
       </LightBoxContentWrapper>
     </LightBoxWrapper>

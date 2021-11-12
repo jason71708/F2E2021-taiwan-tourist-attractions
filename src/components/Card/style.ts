@@ -99,16 +99,30 @@ export const CardInformation = styled.div`
   justify-content: space-between;
 `
 
+export const CardLinkTitle = styled.a`
+  margin: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+  text-decoration: none;
+  cursor: pointer;
+  ${LimitLineCss}
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  ${breakpoint('lg')`
+    font-size: 16px;
+  `}
+`
+
 export const CardTitle = styled.h5`
   margin: 0;
   font-size: 14px;
   font-weight: normal;
   line-height: 20px;
   ${LimitLineCss}
-
-  &:hover {
-    text-decoration: underline;
-  }
 
   ${breakpoint('lg')`
     font-size: 16px;

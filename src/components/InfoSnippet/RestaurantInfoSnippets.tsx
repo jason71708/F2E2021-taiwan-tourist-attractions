@@ -6,16 +6,16 @@ import Icons from '../Icons'
 function RestaurantInfoSnippets({ item }: { item: RestaurantTourismInfo }) {
   return (
     <>
-      <LighboxDetailInfo>
-        {item.OpenTime && <InfoSnippet text={item.OpenTime}>
+      {item.OpenTime && <LighboxDetailInfo>
+        <InfoSnippet text={item.OpenTime}>
           <Icons.Clock />
-        </InfoSnippet>}
-      </LighboxDetailInfo>
-      <LighboxDetailInfo>
-        {(item.Class) && <InfoSnippet text={item.Class}>
+        </InfoSnippet>
+      </LighboxDetailInfo>}
+      {(item.Class) && <LighboxDetailInfo>
+        <InfoSnippet text={item.Class}>
           <Icons.Square />
-        </InfoSnippet>}
-      </LighboxDetailInfo>
+        </InfoSnippet>
+      </LighboxDetailInfo>}
     </>
   )
 }

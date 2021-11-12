@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import breakpoint, { breakpoints } from '../../styles/breakpoint'
 
 export const LightBoxWrapper = styled.div`
   position: fixed;
@@ -39,6 +40,10 @@ export const LightBoxContent = styled.div`
   overflow: auto;
   background-color: #fff;
   padding: 16px;
+
+  ${breakpoint('md')`
+    padding: 32px;
+  `}
 `
 
 export const LightBoxImageWrapper = styled.div`
@@ -49,10 +54,11 @@ export const LightBoxImageWrapper = styled.div`
 
 export const LightBoxImage = styled.img`
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
 `
 
 export const ImageController = styled.div`
@@ -65,6 +71,7 @@ export const ImageController = styled.div`
 export const ImageControlButton = styled.span`
   width: 40px;
   height: 40px;
+  user-select: none;
   
   &:nth-child(1) {
     margin-right: 24px;
@@ -87,6 +94,27 @@ export const LighboxDescription = styled.p`
   line-height: 20px;
 `
 
+export const LighboxDetailInfoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+`
+
 export const LighboxDetailInfo = styled.div`
   margin-top: 16px;
+  flex: 1 0 auto;
+  width: 100%;
+  justify-content: start;
+
+  ${breakpoint('md')`
+    width: calc((100% - 16px) / 2);
+  `}
+
+  &:nth-child(2n) {
+    margin-right: 0;
+
+    @media screen and (min-width: ${breakpoints.md}px) {
+      margin-right: 12px;
+    }
+  }
 `

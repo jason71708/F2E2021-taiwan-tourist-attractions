@@ -6,31 +6,31 @@ import Icons from '../Icons'
 function HotelInfoSnippets({ item }: { item: HotelTourismInfo }) {
   return (
     <>
-      <LighboxDetailInfo>
-        {item.Spec && <InfoSnippet text={item.Spec}>
+      {item.Spec && <LighboxDetailInfo>
+        <InfoSnippet text={item.Spec}>
           <Icons.Ticket />
-        </InfoSnippet>}
-      </LighboxDetailInfo>
-      <LighboxDetailInfo>
-        {(item.Grade) && <InfoSnippet text={item.Grade}>
+        </InfoSnippet>
+      </LighboxDetailInfo>}
+      {(item.Grade) && <LighboxDetailInfo>
+        <InfoSnippet text={item.Grade}>
           <Icons.Square />
-        </InfoSnippet>}
-      </LighboxDetailInfo>
-      <LighboxDetailInfo>
-        {(item.Class) && <InfoSnippet text={item.Class}>
+        </InfoSnippet>
+      </LighboxDetailInfo>}
+      {(item.Class) && <LighboxDetailInfo>
+        <InfoSnippet text={item.Class}>
           <Icons.Square />
-        </InfoSnippet>}
-      </LighboxDetailInfo>
-      <LighboxDetailInfo>
-        {(item.Spec) && <InfoSnippet text={item.Spec}>
+        </InfoSnippet>
+      </LighboxDetailInfo>}
+      {(item.Spec) && <LighboxDetailInfo>
+        <InfoSnippet text={item.Spec}>
           <Icons.Square />
-        </InfoSnippet>}
-      </LighboxDetailInfo>
-      <LighboxDetailInfo>
-        {(item.ServiceInfo) && <InfoSnippet text={item.ServiceInfo}>
+        </InfoSnippet>
+      </LighboxDetailInfo>}
+      {(item.ServiceInfo) && <LighboxDetailInfo>
+        <InfoSnippet text={item.ServiceInfo}>
           <Icons.Square />
-        </InfoSnippet>}
-      </LighboxDetailInfo>
+        </InfoSnippet>
+      </LighboxDetailInfo>}
     </>
   )
 }

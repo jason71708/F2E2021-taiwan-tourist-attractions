@@ -6,31 +6,31 @@ import Icons from '../Icons'
 function ScenicInfoSnippets({ item }: { item: ScenicSpotTourismInfo }) {
   return (
     <>
-      <LighboxDetailInfo>
-        {item.TicketInfo && <InfoSnippet text={item.TicketInfo}>
+      {item.TicketInfo && <LighboxDetailInfo>
+        <InfoSnippet text={item.TicketInfo}>
           <Icons.Ticket />
-        </InfoSnippet>}
-      </LighboxDetailInfo>
-      <LighboxDetailInfo>
-        {item.OpenTime && <InfoSnippet text={item.OpenTime}>
+        </InfoSnippet>
+      </LighboxDetailInfo>}
+      {item.OpenTime && <LighboxDetailInfo>
+        <InfoSnippet text={item.OpenTime}>
           <Icons.Clock />
-        </InfoSnippet>}
-      </LighboxDetailInfo>
-      <LighboxDetailInfo>
-        {(item.Class1) && <InfoSnippet text={item.Class1}>
+        </InfoSnippet>
+      </LighboxDetailInfo>}
+      {(item.Class1) && <LighboxDetailInfo>
+        <InfoSnippet text={item.Class1}>
           <Icons.Triangle />
-        </InfoSnippet>}
-      </LighboxDetailInfo>
-      <LighboxDetailInfo>
-        {(item.Class2) && <InfoSnippet text={item.Class2}>
+        </InfoSnippet>
+      </LighboxDetailInfo>}
+      {(item.Class2) && <LighboxDetailInfo>
+        <InfoSnippet text={item.Class2}>
           <Icons.Triangle />
-        </InfoSnippet>}
-      </LighboxDetailInfo>
-      <LighboxDetailInfo>
-        {(item.Class3) && <InfoSnippet text={item.Class3}>
+        </InfoSnippet>
+      </LighboxDetailInfo>}
+      {(item.Class3) && <LighboxDetailInfo>
+        <InfoSnippet text={item.Class3}>
           <Icons.Triangle />
-        </InfoSnippet>}
-      </LighboxDetailInfo>
+        </InfoSnippet>
+      </LighboxDetailInfo>}
     </>
   )
 }
