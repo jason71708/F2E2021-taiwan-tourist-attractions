@@ -1,5 +1,6 @@
 {
   "name": "f2e-taiwan-tourist-attractions",
+  "homepage": "https://jason71708.github.io/F2E2021-taiwan-tourist-attractions",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +13,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/styled-components": "^5.1.15",
     "axios": "^0.24.0",
+    "gh-pages": "^3.2.3",
     "jssha": "^3.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -29,6 +31,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

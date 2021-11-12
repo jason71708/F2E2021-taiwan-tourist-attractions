@@ -19,7 +19,11 @@ const AppWrapper = styled.div`
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={
+      process.env.NODE_ENV === 'production' ?
+      '/F2E2021-taiwan-tourist-attractions' :
+      '/'
+    }>
       <AppWrapper>
         <MainHeader />
         <Routes>
