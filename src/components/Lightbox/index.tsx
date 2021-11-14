@@ -42,8 +42,6 @@ function Lightbox({ onClose, item }: { onClose: () => void, item: Item }) {
   const [imageIndex, setImageIndex] = useState(0)
   const pictures = formatPictures(item.Picture)
 
-  console.log(item)
-
   useEffect(() => {
     document.body.style.overflow = 'hidden'
     return () => {
@@ -53,13 +51,11 @@ function Lightbox({ onClose, item }: { onClose: () => void, item: Item }) {
 
   return (
     <LightBoxWrapper>
-      <LightBoxContentWrapper onClick={e => {
-        e.stopPropagation()
+      <LightBoxContentWrapper onClick={() => {
         onClose()
       }}>
         <LightBoxContent onClick={e => {
           e.stopPropagation()
-          console.log('LightBoxContent')
         }}>
           <LightBoxImageWrapper>
             <LightBoxImage src={pictures[imageIndex]} onError={e => {

@@ -119,6 +119,7 @@ export const ActivityImage = styled.div.attrs<ActivityImageProps>(props => ({
   background-size: contain;
   background-repeat: no-repeat;
   margin-right: 16px;
+  cursor: pointer;
 
   ${breakpoint('lg')`
     width: 187px;

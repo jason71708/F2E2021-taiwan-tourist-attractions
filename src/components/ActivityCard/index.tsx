@@ -28,7 +28,11 @@ function ActivityCard({ name, location, imageUrl, description, address, websiteU
     <ActivityCardWrapper>
       <ShadowEffectCard>
         <ContentWrapper>
-          <ActivityImage backgoundUrl={imageUrl} />
+          <ActivityImage backgoundUrl={imageUrl} onClick={() => {
+            if (onClick) {
+              onClick()
+            }
+          }}/>
           <ActivityInformation>
             {websiteUrl ? (
               <ActivityLinkTitle href={websiteUrl} lineLimit={1} target="_blank">{name}</ActivityLinkTitle>
@@ -38,7 +42,7 @@ function ActivityCard({ name, location, imageUrl, description, address, websiteU
             {description && <ActivityDescription lineLimit={6}>{description}</ActivityDescription>}
             <ActivityRow>
               {location && address && <LocationLink location={location} address={address} />}
-              <DetailButton onClick={() => {
+              <DetailButton onClick={e => {
                 if (onClick) {
                   onClick()
                 }
