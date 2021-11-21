@@ -10,7 +10,7 @@
 
 - [React](https://reactjs.org/)
 - [Styled Components](https://styled-components.com/)
-- [React-Saga](https://redux-saga.js.org/)
+- [Redux-Saga](https://redux-saga.js.org/)
 - [React-Router](https://reactrouter.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - And other useful plugins
