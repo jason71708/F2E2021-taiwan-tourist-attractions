@@ -10,18 +10,24 @@ import { TDXAPIParameters } from '../../api/types'
 import { getPathWithQueryString } from '../../api/utils'
 import { getAuthorizationHeader } from '../../api/utils'
 
-const fetchRestaurants = (parameters: TDXAPIParameters) => (
-  tdxAPI.get<RestaurantTourismInfo>(getPathWithQueryString('/v2/Tourism/Restaurant', parameters), {
-    headers: getAuthorizationHeader()
-  })
-)
+const fetchRestaurants = (parameters: TDXAPIParameters) =>
+  tdxAPI.get<RestaurantTourismInfo>(
+    getPathWithQueryString('/v2/Tourism/Restaurant', parameters, 'RestaurantName'),
+    {
+      headers: getAuthorizationHeader(),
+    }
+  );
 
 function* fetchRestaurantsSaga(parameters: TDXAPIParameters) {
   try {
     const { data }: { data: RestaurantTourismInfo[] } = yield call(fetchRestaurants, parameters)
     yield put(
       fetchRestaurantsSuccess({
-        restaurants: data
+        restaurants: data.map(raw => ({
+          ...raw,
+          ID: raw.RestaurantID,
+          Name: raw.RestaurantName
+        }))
       })
     )
   } catch (error: any) {

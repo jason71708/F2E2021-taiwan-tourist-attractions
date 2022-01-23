@@ -11,9 +11,12 @@ import { getPathWithQueryString } from '../../api/utils'
 import { getAuthorizationHeader } from '../../api/utils'
 
 const fetchScenicSpots = (parameters: TDXAPIParameters) => {
-  return tdxAPI.get<ScenicSpotTourismInfo>(getPathWithQueryString('/v2/Tourism/ScenicSpot', parameters), {
-    headers: getAuthorizationHeader()
-  })
+  return tdxAPI.get<ScenicSpotTourismInfo>(
+    getPathWithQueryString('/v2/Tourism/ScenicSpot', parameters, 'ScenicSpotName'),
+    {
+      headers: getAuthorizationHeader(),
+    }
+  );
 }
 
 function* fetchScenicSpotsSaga(parameters: TDXAPIParameters) {
@@ -21,7 +24,11 @@ function* fetchScenicSpotsSaga(parameters: TDXAPIParameters) {
     const { data }: { data: ScenicSpotTourismInfo[] } = yield call(fetchScenicSpots, parameters)
     yield put(
       fetchScenicSpotsSuccess({
-        scenicSpots: data
+        scenicSpots: data.map(raw => ({
+          ...raw,
+          ID: raw.ScenicSpotID,
+          Name: raw.ScenicSpotName
+        }))
       })
     )
   } catch (error: any) {

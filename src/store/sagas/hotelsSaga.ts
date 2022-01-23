@@ -10,18 +10,24 @@ import { TDXAPIParameters } from '../../api/types'
 import { getPathWithQueryString } from '../../api/utils'
 import { getAuthorizationHeader } from '../../api/utils'
 
-const fetchHotels = (parameters: TDXAPIParameters) => (
-  tdxAPI.get<HotelTourismInfo>(getPathWithQueryString('/v2/Tourism/Hotel', parameters), {
-    headers: getAuthorizationHeader()
-  })
-)
+const fetchHotels = (parameters: TDXAPIParameters) =>
+  tdxAPI.get<HotelTourismInfo>(
+    getPathWithQueryString('/v2/Tourism/Hotel', parameters, 'HotelName'),
+    {
+      headers: getAuthorizationHeader(),
+    }
+  );
 
 function* fetchHotelsSaga(parameters: TDXAPIParameters) {
   try {
     const { data }: { data: HotelTourismInfo[] } = yield call(fetchHotels, parameters)
     yield put(
       fetchHotelsSuccess({
-        hotels: data
+        hotels: data.map(raw => ({
+          ...raw,
+          ID: raw.HotelID,
+          Name: raw.HotelName
+        }))
       })
     )
   } catch (error: any) {

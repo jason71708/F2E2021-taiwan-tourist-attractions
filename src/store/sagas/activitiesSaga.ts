@@ -11,7 +11,7 @@ import { getPathWithQueryString } from '../../api/utils'
 import { getAuthorizationHeader } from '../../api/utils'
 
 const fetchActivities = (parameters: TDXAPIParameters) => (
-  tdxAPI.get<ActivityTourismInfo>(getPathWithQueryString('/v2/Tourism/Activity', parameters), {
+  tdxAPI.get<ActivityTourismInfo>(getPathWithQueryString('/v2/Tourism/Activity', parameters, 'ActivityName'), {
     headers: getAuthorizationHeader()
   })
 )
@@ -21,7 +21,11 @@ function* fetchActivitiesSaga(parameters: TDXAPIParameters) {
     const { data }: { data: ActivityTourismInfo[] } = yield call(fetchActivities, parameters)
     yield put(
       fetchActivitiesSuccess({
-        activities: data
+        activities: data.map(raw => ({
+          ...raw,
+          ID: raw.ActivityID,
+          Name: raw.ActivityName
+        }))
       })
     )
   } catch (error: any) {

@@ -27,10 +27,6 @@ import LocationLink from '../LocationLink'
 
 export type Item = ScenicSpotTourismInfo | HotelTourismInfo | RestaurantTourismInfo | ActivityTourismInfo
 
-const judgeTypeWithID = (item: Item, idPattern: string) => (
-  item.ID.indexOf(idPattern) > -1
-)
-
 const formatPictures = (picture: Item['Picture']) => {
   const pictures = [picture.PictureUrl1]
   if (picture.PictureUrl2) pictures.push(picture.PictureUrl2)
@@ -86,10 +82,10 @@ function Lightbox({ onClose, item }: { onClose: () => void, item: Item }) {
             {item.Address && <LighboxDetailInfo>
               <LocationLink location={item.Address} address={item.Address} />
             </LighboxDetailInfo>}
-            {judgeTypeWithID(item, 'C1') && <ScenicInfoSnippets item={item} />}
-            {judgeTypeWithID(item, 'C2') && <ActivityInfoSnippets item={item} />}
-            {judgeTypeWithID(item, 'C4') && <HotelInfoSnippets item={item} />}
-            {judgeTypeWithID(item, 'C3') && <RestaurantInfoSnippets item={item} />}
+            {'ScenicSpotID' in item && <ScenicInfoSnippets item={item} />}
+            {'ActivityID' in item && <ActivityInfoSnippets item={item} />}
+            {'HotelID' in item && <HotelInfoSnippets item={item} />}
+            {'RestaurantID' in item && <RestaurantInfoSnippets item={item} />}
           </LighboxDetailInfoWrapper>
         </LightBoxContent>
       </LightBoxContentWrapper>
