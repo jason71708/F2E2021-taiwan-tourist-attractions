@@ -8,16 +8,8 @@ import {
 import { scenicSpotTypes } from '../actions/scenicSpots/type'
 import { TDXAPIParameters } from '../../api/types'
 import { getPathWithQueryString } from '../../api/utils'
-import { getAuthorizationHeader } from '../../api/utils'
 
-const fetchScenicSpots = (parameters: TDXAPIParameters) => {
-  return tdxAPI.get<ScenicSpotTourismInfo>(
-    getPathWithQueryString('/v2/Tourism/ScenicSpot', parameters, 'ScenicSpotName'),
-    {
-      headers: getAuthorizationHeader(),
-    }
-  );
-}
+const fetchScenicSpots = (parameters: TDXAPIParameters) => tdxAPI.get<ScenicSpotTourismInfo>(getPathWithQueryString('/v2/Tourism/ScenicSpot', parameters, 'ScenicSpotName'));
 
 function* fetchScenicSpotsSaga(parameters: TDXAPIParameters) {
   try {

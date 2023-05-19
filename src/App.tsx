@@ -21,8 +21,8 @@ function App() {
   return (
     <BrowserRouter basename={
       process.env.NODE_ENV === 'production' ?
-      '/F2E2021-taiwan-tourist-attractions' :
-      '/'
+        process.env.REACT_APP_GITHUB_PAGE_PATH :
+        '/'
     }>
       <AppWrapper>
         <MainHeader />
@@ -31,7 +31,7 @@ function App() {
           <Route path={Paths.ScenicSpots} element={<ScenicSpotsPage />}></Route>
           <Route path={Paths.Accommodations} element={<RestaurantsPage />}></Route>
           {/* <Route path={Paths.Traffic} element={<div>3</div>}></Route> */}
-          <Route path="*" element={<ProblemPlaceholder problem={Problems.PageNotFound}/>} />
+          <Route path="*" element={<ProblemPlaceholder problem={Problems.PageNotFound} />} />
         </Routes>
         <Footer />
       </AppWrapper>
